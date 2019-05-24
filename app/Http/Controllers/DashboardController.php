@@ -7,7 +7,7 @@ use App\Contact;
 use App\Minister;
 use App\Program;
 use App\Bible;
-use App\Parachurch;
+use App\ParaChurch;
 use Calendar;
 use App\Commission;
 use App\Denomination;
