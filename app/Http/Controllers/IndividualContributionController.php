@@ -22,7 +22,7 @@ class IndividualContributionController extends Controller
     public function index()
     {
         $indcontributions=IndividualContribution::all();
-        // dd($indcontributions);
+//         dd($indcontributions);
         return view('finance.view-contrib')->with('indcontributions', $indcontributions);
     }
 
@@ -132,6 +132,7 @@ class IndividualContributionController extends Controller
     }
 
     /**
+     *
      * Display the specified resource.
      *
      * @param  \App\IndividualContribution  $individualContribution
@@ -140,7 +141,7 @@ class IndividualContributionController extends Controller
     public function show(IndividualContribution $individualcontribution)
     {
 
-        // dd($individualcontribution);
+//         dd($individualcontribution);
         return view('finance.single-contri')->with('individualcontribution',$individualcontribution);
     }
 

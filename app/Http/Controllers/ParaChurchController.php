@@ -185,7 +185,8 @@ class ParaChurchController extends Controller
              }
 DB::commit();
 
-        return redirect()->back()->with('message', 'Para Church Added successfully');
+        //return redirect()->back()->with('message', 'Para Church Added successfully');
+        return redirect()->route('parachurch.show', [$parachurch->id])->with('message', 'Para Church Added successfully');
     }
 
     /**
@@ -377,7 +378,8 @@ DB::commit();
                   ]);
              }
       DB::commit();
-             return redirect()->back()->with('message', 'ParaChurch Edited successfully');
+//             return redirect()->back()->with('message', 'ParaChurch Edited successfully');
+        return redirect()->route('parachurch.show', [$parachurch->id])->with('message', 'Para Church Added successfully');
 
     }
 

@@ -46,7 +46,7 @@
                                     </tr> 
                                     <tr>
                                         <td>Gender</td>
-                                        <td>{{ $minister->gender }} {{ $minister->last_name }}</td>
+                                        <td>{{ $minister->gender }}</td>
                                     </tr>
                                     <tr>
                                          <td>Email</td>
@@ -71,8 +71,24 @@
                                     <tr>
                                           <td>Physical Address</td>
                                         <td>{{ $minister->address }}</td>  
-                                    </tr> 
-                                   
+                                    </tr>
+                                    <tr>
+                                        <td>Branch \ Assembly</td>
+                                        <td>{{ $minister->branch }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Position</td>
+                                        <td>{{ $minister->position }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Title</td>
+                                        <td>{{ $minister->title }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Marita status</td>
+                                        <td>{{ $minister->marital_status }}</td>
+                                    </tr>
+
                                 </tbody>
                             </table>
                         </div>

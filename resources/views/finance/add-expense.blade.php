@@ -23,7 +23,7 @@
 			<div class="panel panel-danger" style="padding:0px">
 							<div class="panel-heading" style="padding:8px">
 					<h4 class="panel-title" style="text-align:left">
-						<a href="#basic" id="BasicInfor" data-toggle="collapse" data-parent="accordion">Expenses Capture</a>
+						<a href="#basic" id="BasicInfor" data-toggle="collapse" data-parent="accordion">Add an Expense</a>
 					</h4>
 				</div>
 					
@@ -32,7 +32,7 @@
 										
 						 {!! csrf_field() !!}
 
-        				@include('partials.validation');
+        				@include('partials.validation')
 						   <div class="form-group">
 						  <label for="expenditure" class="col-sm-2 control-label" style="text-align:left" required="">Expenditure Type <i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
 							<div class="col-sm-3  col-sm-offset-1">

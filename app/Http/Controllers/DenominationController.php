@@ -97,7 +97,7 @@ class DenominationController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'home_tel' => 'numeric',
-            'email' => 'email',
+            'email' => 'sometimes|nullable|email',
             // 'marital_status' => 'required', 
             'gender' => 'required',
             // 'hod_or_rep' => 'required',
@@ -410,7 +410,9 @@ class DenominationController extends Controller
         ];
         $denomination->update($data);
 
-        $hod=HOD::find($denomination->id);
+
+
+        $hod=Hod::where('denomination_id',$denomination->id)->first();
 
         $hod->update([
             'denomination_id' => $denomination->id,
@@ -424,7 +426,7 @@ class DenominationController extends Controller
             'hod_or_rep' => $request->input('hod_or_rep'),
         ]);  
 
-        $contact=Contact::find($denomination->id);
+        $contact=Contact::whereDenominationId($denomination->id)->first();
 
 
         $contact->update([

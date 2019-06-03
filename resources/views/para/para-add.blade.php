@@ -420,7 +420,7 @@
 
 
                <div class="form-group">
-                <label for="research_and_dev" class="col-sm-3 control-label" style="text-align:left"><strong>1. Reseach and Development Commission (RDC), Departments</strong><i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
+                <label for="research_and_dev" class="col-sm-3 control-label" style="text-align:left"><strong>1. Reseach and Development Commission (RDC), Departments</strong></label>
                 <div class="col-sm-6 col-sm-offset-1">
                   <label class="checkbox"><input type="checkbox" class="form-check-input" value="Monitoring & Evaluation" name="research_and_dev[]">Monitoring & Evaluation</label>
                   <label class="checkbox"><input type="checkbox" class="form-check-input" value="Research and Documentation" name="research_and_dev[]">Research and Documentation</label>
@@ -436,7 +436,7 @@
               </div>
 
               <div class="form-group">
-                <label for="other_countries" class="col-sm-3 control-label" style="text-align:left"><strong>2. Gender Development Commission (GDC), Departments</strong><i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
+                <label for="other_countries" class="col-sm-3 control-label" style="text-align:left"><strong>2. Gender Development Commission (GDC), Departments</strong></label>
                 <div class="col-sm-6 col-sm-offset-1">
                   <label class="checkbox"><input type="checkbox"  value="Gender Mainstreaming & Leadership" name="gender_dev[]">Gender Mainstreaming & Leadership</label>
                   <label class="checkbox"><input type="checkbox"  value="Advocacy & Governance" name="gender_dev[]">Advocacy & Governance</label>
@@ -455,7 +455,7 @@
 
 
               <div class="form-group">
-                <label for="other_countries" class="col-sm-3 control-label" style="text-align:left"><strong>3. Humanitarian Relief Development (HRD), Departments</strong><i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
+                <label for="other_countries" class="col-sm-3 control-label" style="text-align:left"><strong>3. Humanitarian Relief Development (HRD), Departments</strong></label>
                 <div class="col-sm-6 col-sm-offset-1">
                   <label class="checkbox"><input type="checkbox"  value="Child Protection & HIV/AIDS" name="humanitarian[]">Child Protection & HIV/AIDS</label>
 
@@ -474,7 +474,7 @@
               </div>
 
               <div class="form-group">
-                <label for="other_countries" class="col-sm-3 control-label" style="text-align:left"><strong>4. Peace and Justice Commission (PJC), Departments</strong><i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
+                <label for="other_countries" class="col-sm-3 control-label" style="text-align:left"><strong>4. Peace and Justice Commission (PJC), Departments</strong></label>
 
                 <div class="col-sm-6 col-sm-offset-1">
                   <label class="checkbox"><input type="checkbox"  value="Peace BuildingGender Mainstreaming & Leadership" name="peace_justice[]">Peace Building</label>
@@ -493,7 +493,7 @@
 
 
               <div class="form-group">
-                <label for="other_countries" class="col-sm-3 control-label" style="text-align:left"><strong>5. Commission for Ministry Development (CMD), Departments</strong><i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
+                <label for="other_countries" class="col-sm-3 control-label" style="text-align:left"><strong>5. Commission for Ministry Development (CMD), Departments</strong></label>
                 <div class="col-sm-6 col-sm-offset-1">
 
                   <label class="checkbox"><input type="checkbox"  value="Evangelism, Church Plating & Prayer" name="comm_for_min[]">Evangelism, Church Plating & Prayer</label>

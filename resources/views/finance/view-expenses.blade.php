@@ -68,9 +68,41 @@ Expenses
 
     $('#tableE').DataTable({
                             dom: 'Bfrtip',
-                            buttons: [
-                                'copy', 'csv', 'excel', 'pdf', 'print'
-                            ],
+		buttons: [
+			{
+				extend: 'excel',
+				text: 'Excel',
+				className: 'btn btn-default',
+
+			},
+
+			{
+				extend: 'pdf',
+				text: 'Pdf',
+				className: 'btn btn-default',
+
+			},
+
+			{
+				extend: 'copy',
+				text: 'Copy',
+				className: 'btn btn-default',
+
+			},
+
+			{
+				extend: 'csv',
+				text: 'CSV',
+				className: 'btn btn-default',
+
+			},
+			{
+				extend: 'print',
+				text: 'Print',
+				className: 'btn btn-primary',
+
+			},
+		],
 
 
                         })

@@ -66,6 +66,10 @@
                                     <td>{{$bible->founder}}</td>
                                 </tr>
                                 <tr>
+                                    <td>Courses Offered</td>
+                                    <td>{{$bible->courses}}</td>
+                                </tr>
+                                <tr>
                                     <td>Enrolment</td>
                                     <td>{{$bible->enrollment}}</td>
                                 </tr>
@@ -77,10 +81,10 @@
                                     <td>Subscription Balance</td>
                                     <td>{{$bible->sub_balance}}</td>
                                 </tr>
-                                <tr>
+                               {{-- <tr>
                                     <td>Category</td>
                                     <td>{{$bible->category}}</td>
-                                </tr>
+                                </tr>--}}
                             </tbody>
 
                         </table>

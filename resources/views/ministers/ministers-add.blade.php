@@ -25,7 +25,7 @@ Ministers
         <div class="panel panel-danger">
           <div class="panel-heading" style= 'padding:10px'>
             <h4 class="panel-title"  style="text-align:left">
-              <a id="BasicInfor" style = 'font-family:serif;font-size:17px' ">MINISTERS REGISTRATION</a>
+              <a id="BasicInfor" style = "font-family:serif;font-size:17px">Ministers Registration</a>
             </h4>
           </div>
         </div>
@@ -111,7 +111,7 @@ Ministers
       <div class="form-group">
         <label for="number_branches" class="col-sm-2 control-label" style="text-align:left"><strong>First Name</strong><i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
         <div class="col-sm-6 col-sm-offset-1">
-          <input type="text" class="form-control" style="border-radius:10px " name="first_name" placeholder="Number of Branches">
+          <input type="text" class="form-control" style="border-radius:10px " name="first_name" placeholder="First Name">
         </div>
       </div>
 

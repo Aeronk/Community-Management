@@ -13,6 +13,7 @@
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
 <![endif]-->
 <link rel="stylesheet" href="{{ asset('lib/datatables/css/dataTables.bootstrap.min.css') }}" type="text/css"/> 
 <link rel="stylesheet" href="{{ asset('lib/datatables/css/dataTables.tableTools.css') }}" type="text/css"/>
@@ -105,9 +106,9 @@ height: 1px;
                         </li>
                         <li class="parent"><a href="{{ route('minister.index')}}"><i class="icon s7-graph"></i><span>Ministers</span></a>
                           <ul class="sub-menu">
-                            <li><a href="{{ route('minister.create')}}">Add</a>
+                            <li><a href="{{ route('minister.create')}}">Add Minister</a>
                             </li>
-                            <li><a href="{{ route('minister.index')}}">View</a>
+                            <li><a href="{{ route('minister.index')}}">View Minister</a>
                             </li>
 
                           </ul>
