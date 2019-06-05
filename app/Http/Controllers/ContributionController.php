@@ -54,7 +54,7 @@ class ContributionController extends Controller
 //        return $request->all();
         Contribution::unguard();
 
-        Contribution::create([
+        $contribution = Contribution::create([
 
             'denomination_id' => $request->input('denomination_id'),
             'province' => $request->input('province'),
@@ -68,7 +68,11 @@ class ContributionController extends Controller
             'comment' => $request->input('comment')
         ]);
 
-        return redirect()->back()->with('message', 'Contribution Added successfully');
+//        return $contribution;
+
+        return redirect()->route('contribution.show', [$contribution->id])->with('message', 'Contribution Added successfully');
+
+        //return redirect()->back()->with('message', 'Contribution Added successfully');
 
     }
 
@@ -81,7 +85,7 @@ class ContributionController extends Controller
     public function show(contribution $contribution)
 
     {
-        return view('finance.singlecontri')->with('contribution', $contribution);
+        return view('finance.singlecontri')->with('individualContribution', $contribution);
     }
 
     /**
