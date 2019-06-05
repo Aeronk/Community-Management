@@ -118,7 +118,7 @@ class IndividualContributionController extends Controller
             // 'comment' =>$request->input('comment')
        ] );
 
-          $contact=Contact::where('denomination_id',$request->input('denomination_id'))->get();
+          $contact=Contact::where('denomination_id',$request->input('denomination_id'))->first();
          
           $message="Subscription of $ ".$request->input('amount_recieved')."has been recieved your balance is".$newbalance."EFZ";
 
