@@ -58,6 +58,32 @@
 								<input type="text" name=""  class="form-control" id="supplierName" style="border-radius:10px" name="supplier_name">
 							 </div>
 						</div>
+
+							<div class="form-group">
+								<label for="payment_method" class="col-sm-2 control-label" style="text-align:left" required="">Payment Method<i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
+								<div class="col-sm-3  col-sm-offset-1">
+									<input type="text" name="payment_method"  class="form-control" id="payment_method" style="border-radius:10px">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="accounts" class="col-sm-2 control-label" style="text-align:left" required="">Accounts<i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
+								<div class="col-sm-3  col-sm-offset-1">
+									<input type="text" name="accounts"  class="form-control" id="accounts" style="border-radius:10px" name="accounts">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="payment_status" class="col-sm-2 control-label" style="text-align:left" required="">Payment Status<i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
+								<div class="col-sm-3  col-sm-offset-1">
+									<select class="form-control" id="payment_status" name="payment_status" required="">
+										<option value="" selected="selected">Please Select</option>
+											<option value="paid">Paid</option>
+										<option value="not paid">Not paid</option>
+									</select>
+
+								</div>
+							</div>
 						  
 						 
 					  <div class="form-group">
