@@ -90,7 +90,6 @@ height: 1px;
                             </li>
                             <li><a href="{{ route('denomination.index')}}"><i class="icon s7-server"></i>View Denominations</a>
                             </li>
-                            <hr>
                              <li><a href="{{ route('bible.create')}}"><i class="icon s7-study"></i>Add Bible School</a>
                             </li>
                             <li><a href="{{ route('bible.index')}}"><i class="icon s7-study"></i>View Bible Schools</a>

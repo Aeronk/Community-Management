@@ -11,57 +11,54 @@
 |
 */
 
-Route::get('/test' , function() {
-	Mail::queue('email.ad', function ($message) {
-	   $message->to('test@example.com');
-	});
+Route::get('/test', function () {
+    Mail::queue('email.ad', function ($message) {
+        $message->to('test@example.com');
+    });
 });
 
-Route::group(['middleware' => ['web','auth']], function() {
+Route::group(['middleware' => ['web', 'auth']], function () {
 
 
-	Route::get('/','DashboardController@index');
-	
+    Route::get('/', 'DashboardController@index');
 
-	Route::get('/category',array('as'=>'category',
-            'uses'=>'IndividualContributionController@myformAjax'));
+    Route::get('/category', array('as' => 'category',
+        'uses' => 'IndividualContributionController@myformAjax'));
 
-	Route::get('/balance',array('as'=>'balance',
-            'uses'=>'IndividualContributionController@balanceAjax'));
-	
+    Route::get('/balance', array('as' => 'balance',
+        'uses' => 'IndividualContributionController@balanceAjax'));
 
-	Route::get('/sms',function ()
-	{
-		return view('sms');
+    Route::get('/sms', function () {
+        return view('sms');
 
-	});
-	Route::get('/finance',function ()
-	{
-		return view('finance.add-individual-contrib');
+    });
 
-	});
+    Route::get('/finance', function () {
+        return view('finance.add-individual-contrib');
+    });
 
-Route::get('/datatables', 'DatatablesController@index');
-Route::get('/datatables/data', 'DatatablesController@anyData')->name('datatables.data');
-	
+    Route::get('/datatables', 'DatatablesController@index');
 
-	Route::resources([
-		'denomination' => "DenominationController",
-		'minister' => "MinisterController",
-		'individualcontribution' => "IndividualContributionController",
-		'collectivecontribution' => "IndividualContributionController",
-		'expenses'=>'ExpenseController',
-		'dashboard' => "DashboardController",
-		'sms' => "SmsController",
-		'bible' => "BibleController",
-		'parachurch' => "ParaChurchController",
-		'activities' => "ActivityController",
-		'contribution' => "ContributionController",
-		
-	]);
+    Route::get('/datatables/data', 'DatatablesController@anyData')->name('datatables.data');
+
+    Route::resources([
+        'denomination' => "DenominationController",
+        'minister' => "MinisterController",
+        'individualcontribution' => "IndividualContributionController",
+        'collectivecontribution' => "IndividualContributionController",
+        'expenses' => 'ExpenseController',
+        'dashboard' => "DashboardController",
+        'sms' => "SmsController",
+        'bible' => "BibleController",
+        'parachurch' => "ParaChurchController",
+        'activities' => "ActivityController",
+        'contribution' => "ContributionController",
+
+    ]);
+
+    Route::get('expense/delete/{expense}', 'ExpenseController@destroy')->name('expenses.delete');
 
 });
-
 
 // Auth::routes();
 // Authentication Routes...

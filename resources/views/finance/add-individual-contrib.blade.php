@@ -124,8 +124,33 @@
                                       <strong>{{ $errors->first('received_from') }}</strong>
                                       </span>
                                     @endif
-                        </div> 
+                        </div>
 
+                        <div class="form-group">
+                            <label for="payment_method" class="col-sm-2 control-label" style="text-align:left">Payment Method<i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
+                            <div class="col-sm-3 col-sm-offset-1">
+                                <input type="text" name="payment_method" class="form-control" style="border-radius:10px">
+                            </div>
+
+                            @if ($errors->has('payment_method'))
+                                <span class="invalid-feedback">
+                                      <strong>{{ $errors->first('payment_method') }}</strong>
+                                      </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
+                            <label for="accounts" class="col-sm-2 control-label" style="text-align:left">Accounts<i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
+                            <div class="col-sm-3 col-sm-offset-1">
+                                <input type="text" name="accounts" class="form-control" style="border-radius:10px">
+                            </div>
+
+                            @if ($errors->has('accounts'))
+                                <span class="invalid-feedback">
+                                      <strong>{{ $errors->first('accounts') }}</strong>
+                                      </span>
+                            @endif
+                        </div>
 
                         <div class="form-group">
                             
@@ -133,10 +158,7 @@
                                 <input type="hidden" name="captured_by" class="form-control" style="border-radius:10px" value="{{Auth::user()->name}}">
                             </div>
 
-                           
                         </div>
-
-                     
 
                         <div class="form-group">
                             <label for="date_recieved" class="col-sm-2 control-label" style="text-align:left">Date<i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>

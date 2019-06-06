@@ -56,10 +56,7 @@
 						  <label for="supplierName" class="col-sm-2 control-label" style="text-align:left" required="">Supplier Name<i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
 							<div class="col-sm-3  col-sm-offset-1">
 								<input type="text" name=""  class="form-control" id="supplierName" style="border-radius:10px" name="supplier_name">
-							
-							  
 							 </div>
-							 
 						</div>
 						  
 						 

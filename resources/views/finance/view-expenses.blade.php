@@ -45,7 +45,7 @@ Expenses
 			</a> 
 			<a  class="btn btn-danger btn-xs" href="{{ route('expenses.edit', $expense->id) }}"><i class="icon s7-pen"></i></a>
 
-			<a  class="btn btn-danger btn-xs" href="{{ route('expenses.destroy', $expense->id) }}"><i class="icon s7-trash"></i></a>
+			<a  class="btn btn-danger btn-xs" href="{{ route('expenses.delete', $expense->id) }}"><i class="icon s7-trash"></i></a>
 			</td>
 		</tr>
 		@endforeach

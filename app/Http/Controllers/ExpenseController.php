@@ -101,7 +101,7 @@ class ExpenseController extends Controller
 
 
 ]);
-        return redirect()->route('expenses.show', [$expense->id])->with('message', 'Expense Added successfully');
+        return redirect()->route('expenses.show', [$expense->id])->with('message', 'Expense Updated successfully');
     }
 
     /**
@@ -112,6 +112,9 @@ class ExpenseController extends Controller
      */
     public function destroy(Expense $expense)
     {
-        //
+        $remove = $expense->delete();
+        if ($remove){
+            return redirect()->back()->with('message', 'Expense deleted successfully');
+        }
     }
 }

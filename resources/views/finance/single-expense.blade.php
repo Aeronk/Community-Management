@@ -15,6 +15,15 @@ Expense
 @section('content')
     <div class="am-content">
     <div class="main-content">
+		<div class="container">
+			<div class="row">
+
+				<a href="{{ route('expenses.index') }}" class="btn btn-sm btn-primary"><i class="fa fa-hand"></i>Back
+					to listing</a><br>
+
+
+			</div>
+			<div class="row">
 
 <table class="table table-striped table-bordered">
 	<thead>
@@ -52,7 +61,7 @@ Expense
 
 
 	</table>
-
+			</div>
 	 </div>
     	
     	
