@@ -176,7 +176,7 @@ height: 1px;
                             </li>
                             <li><a href="{{ route('allusers') }}">All Users</a>
                             </li>
-                            <li><a href="#">General Settings</a>
+                            <li><a href="{{ route('admin.settings') }}">General Settings</a>
                             </li>
                           </ul>
                         </li>

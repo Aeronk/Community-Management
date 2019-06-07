@@ -53,10 +53,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         'parachurch' => "ParaChurchController",
         'activities' => "ActivityController",
         'contribution' => "ContributionController",
-
     ]);
 
     Route::get('expense/delete/{expense}', 'ExpenseController@destroy')->name('expenses.delete');
+    Route::get('admin/settings','AdminController@settingsView')->name('admin.settings');
 
 });
 

@@ -111,7 +111,7 @@ class IndividualContributionController extends Controller
             'denomination_id' => $request->input('denomination_id'),
             'type' => $request->input('type'),
             'transaction_id' => $request->input('transaction_id'),
-            'amount' => $request->input('amount_recieved'),
+            'amount' => $request->input('amount_received'),
             'received_from' => $request->input('received_from'),
             'payment_method' => $request->input('payment_method'),
             'account' => $request->input('accounts'),

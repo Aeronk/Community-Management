@@ -38,7 +38,7 @@ All Users
 		<tr>
 			<td>{{$user->name}}</td>
 			<td>{{$user->email}}</td>
-			<td>{{$user->denomination->name}}</td>
+			<td>{{$user->denomination->name??""}}</td>
 			<td>{{$user->province->name}}</td>
 			{{-- <td>{{$user->region->name}}</td> --}}
 			<td>{{$user->userlevel->name}}</td>

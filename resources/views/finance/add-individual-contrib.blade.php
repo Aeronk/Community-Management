@@ -102,13 +102,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="col-sm-2 control-label" style="text-align:left">Amount Recieved<i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
+                            <label for="amount_received" class="col-sm-2 control-label" style="text-align:left">Amount Received<i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
                             <div class="col-sm-3 col-sm-offset-1">
-                                <input type="text" class="form-control" data-parsley-type="number" style="border-radius:10px" id="amount_recieved" name="amount_recieved" placeholder="Amount Received">
+                                <input type="text" class="form-control" data-parsley-type="number" style="border-radius:10px" id="amount_received" name="amount_received" placeholder="Amount Received">
                             </div>
-                             @if ($errors->has('amount_recieved'))
+                             @if ($errors->has('amount_received'))
                                     <span class="invalid-feedback">
-                                      <strong>{{ $errors->first('amount_recieved') }}</strong>
+                                      <strong>{{ $errors->first('amount_received') }}</strong>
                                       </span>
                                     @endif
                         </div>
