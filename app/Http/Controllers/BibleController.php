@@ -68,7 +68,7 @@ class BibleController extends Controller
             'courses' => $string3,
             'sub_balance' => $request->input('sub_balance'),
             'number_of_branches' => $request->input('number_of_branches'),
-            'category' => $request->input('category')
+            'category' => $request->input('category')??''
 
         ]);
 

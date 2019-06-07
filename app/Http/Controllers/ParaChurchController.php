@@ -86,7 +86,7 @@ class ParaChurchController extends Controller
         'email' => $request->input('email'),
         'sub_balance' => $request->input('sub_balance'),
         'number_of_branches' => $request->input('number_of_branches'),
-        'category' => $request->input('category')
+        'category' => $request->input('category')??''
 
         ]);
        HOD::unguard();

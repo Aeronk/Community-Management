@@ -69,7 +69,7 @@
                             <div class="col-md-6">
                                
                                 <select class="form-control" id="denomination" class="form-control{{ $errors->has('denomination_id') ? ' is-invalid' : '' }}" name="denomination_id" value="{{ old('denomination_id') }}" required  style="border-radius: 10px;">
-                                    <option>Please Select</option>
+                                    <option value="">Please Select</option>
                                      @foreach($denominations as $denomination)
                                     <option value="{{$denomination->id}}">{{$denomination->name}}</option>
                                     @endforeach
@@ -90,7 +90,7 @@
                             <div class="col-md-6">
                                
                                 <select class="form-control" id="ministry" class="form-control{{ $errors->has('province_id') ? ' is-invalid' : '' }}" name="province_id" value="{{ old('province_id') }}" required  style="border-radius: 10px;">
-                                    <option>Please Select</option>
+                                    <option value="">Please Select</option>
                                      @foreach($provinces as $province)
                                     <option value="{{$province->id}}">{{$province->name}}</option>
                                     @endforeach
@@ -110,7 +110,7 @@
                             <div class="col-md-6">
                                
                                 <select class="form-control" id="region" class="form-control{{ $errors->has('region_id') ? ' is-invalid' : '' }}" name="region_id" value="{{ old('region_id') }}" required  style="border-radius: 10px;">
-                                    <option>Please Select</option>
+                                    <option value="">Please Select</option>
                                      @foreach($regions as $region)
                                     <option value="{{$region->id}}">{{$region->name}}</option>
                                     @endforeach
@@ -132,7 +132,7 @@
                             <div class="col-md-6">
                                
                                 <select class="form-control" id="user_level" class="form-control" name="user_level" value="{{ old('user_level') }}" required>
-                                    <option>Please Select</option>
+                                    <option value="">Please Select</option>
                                      @foreach($userlevels as $userlevel)
                                     <option value="{{$userlevel->id}}">{{$userlevel->name}}</option>
                                     @endforeach

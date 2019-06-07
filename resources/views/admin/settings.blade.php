@@ -1,6 +1,6 @@
 
 @extends('layout')
-@section('title','All Users')
+@section('title','General Settings')
 
 @section('header')
     @parent
@@ -116,7 +116,7 @@
                                     </div>
 
                                 </div><!-- end Tab panes fade-->
-                                <div class="tab-pane fade active" id="province"><!-- start Tab panes fade-->
+                                <div class="tab-pane fade" id="province"><!-- start Tab panes fade-->
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
@@ -200,7 +200,7 @@
                                     </div>
 
                                 </div><!-- end Tab panes fade-->
-                                <div class="tab-pane fade active" id="zone"><!-- start Tab panes fade-->
+                                <div class="tab-pane fade" id="zone"><!-- start Tab panes fade-->
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
@@ -284,13 +284,13 @@
                                     </div>
 
                                 </div><!-- end Tab panes fade-->
-                                <div class="tab-pane fade active" id="category"><!-- start Tab panes fade-->
+                                <div class="tab-pane fade" id="category"><!-- start Tab panes fade-->
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myZone"
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myCategory"
                                                 style="margin-bottom:10px;">
-                                            Add Zone
+                                            Add Category
                                         </button>
                                         <table class="table table-striped">
                                             <thead>
@@ -330,13 +330,13 @@
 
                                         </table>
                                         <!-- The Modal -->
-                                        <div class="modal fade" id="myZone">
+                                        <div class="modal fade" id="myCategory">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
 
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title">Add Zone</h4>
+                                                        <h4 class="modal-title">Add Category</h4>
                                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                     </div>
 
@@ -345,9 +345,597 @@
                                                         <form method="post" action="#{{--{{ route('positions.store') }}--}}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
-                                                                <label for="zone">Zone</label>
-                                                                <input type="text" class="form-control" placeholder="Zone Name"
-                                                                       name="zone">
+                                                                <label for="category">Category</label>
+                                                                <input type="text" class="form-control" placeholder="Category Name"
+                                                                       name="category">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div><!-- end Tab panes fade-->
+                                <div class="tab-pane fade" id="country"><!-- start Tab panes fade-->
+                                    <h2 align="center" style="color:#68A4C4"></h2>
+
+                                    <div class="row">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myCountry"
+                                                style="margin-bottom:10px;">
+                                            Add Other Country
+                                        </button>
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Operations</th>
+                                            </tr>
+                                            </thead>
+                                            {{--<tbody>
+                                            @foreach($positions as $pos)
+                                                <tr>
+                                                    <td>{{$pos->title}}</td>
+                                                    @if($pos->trackable==1)
+                                                        <td>
+                                                            <button class="btn btn-info">Trackable</button>
+                                                        </td>
+                                                    @endif
+                                                    @if($pos->trackable==2 OR $pos->trackable==NULL)
+                                                        <td>
+                                                            <button class="btn btn-danger">Not Trackable</button>
+                                                        </td>
+                                                    @endif
+                                                    <td>
+                                                        <a href="{{ route('position-edit', $pos->id) }}"
+                                                           class="btn btn-danger btn-xs" data-toggle="modal"
+                                                           data-target="#"
+                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
+
+                                                        <a href="{{ route('positions.destroy', $pos->id) }}"
+                                                           data-method="DELETE"
+                                                           data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
+                                                                    class="icon s7-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>--}}
+
+                                        </table>
+                                        <!-- The Modal -->
+                                        <div class="modal fade" id="myCountry">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Add Other Country</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                            {!! csrf_field() !!}
+                                                            <div class="form-group">
+                                                                <label for="country">Country</label>
+                                                                <input type="text" class="form-control" placeholder="Country Name"
+                                                                       name="country">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div><!-- end Tab panes fade-->
+                                <div class="tab-pane fade" id="marital_status"><!-- start Tab panes fade-->
+                                    <h2 align="center" style="color:#68A4C4"></h2>
+
+                                    <div class="row">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myMaritalStatus"
+                                                style="margin-bottom:10px;">
+                                            Add Marital Status
+                                        </button>
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Operations</th>
+                                            </tr>
+                                            </thead>
+                                            {{--<tbody>
+                                            @foreach($positions as $pos)
+                                                <tr>
+                                                    <td>{{$pos->title}}</td>
+                                                    @if($pos->trackable==1)
+                                                        <td>
+                                                            <button class="btn btn-info">Trackable</button>
+                                                        </td>
+                                                    @endif
+                                                    @if($pos->trackable==2 OR $pos->trackable==NULL)
+                                                        <td>
+                                                            <button class="btn btn-danger">Not Trackable</button>
+                                                        </td>
+                                                    @endif
+                                                    <td>
+                                                        <a href="{{ route('position-edit', $pos->id) }}"
+                                                           class="btn btn-danger btn-xs" data-toggle="modal"
+                                                           data-target="#"
+                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
+
+                                                        <a href="{{ route('positions.destroy', $pos->id) }}"
+                                                           data-method="DELETE"
+                                                           data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
+                                                                    class="icon s7-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>--}}
+
+                                        </table>
+                                        <!-- The Modal -->
+                                        <div class="modal fade" id="myMaritalStatus">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Add Marital Status</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                            {!! csrf_field() !!}
+                                                            <div class="form-group">
+                                                                <label for="marital_status">Marital Status</label>
+                                                                <input type="text" class="form-control" placeholder="Marital Status"
+                                                                       name="marital_status">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div><!-- end Tab panes fade-->
+                                <div class="tab-pane fade" id="account"><!-- start Tab panes fade-->
+                                    <h2 align="center" style="color:#68A4C4"></h2>
+
+                                    <div class="row">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myAccount"
+                                                style="margin-bottom:10px;">
+                                            Add Accounts
+                                        </button>
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Operations</th>
+                                            </tr>
+                                            </thead>
+                                            {{--<tbody>
+                                            @foreach($positions as $pos)
+                                                <tr>
+                                                    <td>{{$pos->title}}</td>
+                                                    @if($pos->trackable==1)
+                                                        <td>
+                                                            <button class="btn btn-info">Trackable</button>
+                                                        </td>
+                                                    @endif
+                                                    @if($pos->trackable==2 OR $pos->trackable==NULL)
+                                                        <td>
+                                                            <button class="btn btn-danger">Not Trackable</button>
+                                                        </td>
+                                                    @endif
+                                                    <td>
+                                                        <a href="{{ route('position-edit', $pos->id) }}"
+                                                           class="btn btn-danger btn-xs" data-toggle="modal"
+                                                           data-target="#"
+                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
+
+                                                        <a href="{{ route('positions.destroy', $pos->id) }}"
+                                                           data-method="DELETE"
+                                                           data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
+                                                                    class="icon s7-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>--}}
+
+                                        </table>
+                                        <!-- The Modal -->
+                                        <div class="modal fade" id="myAccount">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Add Accounts</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                            {!! csrf_field() !!}
+                                                            <div class="form-group">
+                                                                <label for="account">Account</label>
+                                                                <input type="text" class="form-control" placeholder="Account Name"
+                                                                       name="account">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div><!-- end Tab panes fade-->
+                                <div class="tab-pane fade" id="payment_method"><!-- start Tab panes fade-->
+                                    <h2 align="center" style="color:#68A4C4"></h2>
+
+                                    <div class="row">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myPaymentMethod"
+                                                style="margin-bottom:10px;">
+                                            Add Payment Method
+                                        </button>
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Operations</th>
+                                            </tr>
+                                            </thead>
+                                            {{--<tbody>
+                                            @foreach($positions as $pos)
+                                                <tr>
+                                                    <td>{{$pos->title}}</td>
+                                                    @if($pos->trackable==1)
+                                                        <td>
+                                                            <button class="btn btn-info">Trackable</button>
+                                                        </td>
+                                                    @endif
+                                                    @if($pos->trackable==2 OR $pos->trackable==NULL)
+                                                        <td>
+                                                            <button class="btn btn-danger">Not Trackable</button>
+                                                        </td>
+                                                    @endif
+                                                    <td>
+                                                        <a href="{{ route('position-edit', $pos->id) }}"
+                                                           class="btn btn-danger btn-xs" data-toggle="modal"
+                                                           data-target="#"
+                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
+
+                                                        <a href="{{ route('positions.destroy', $pos->id) }}"
+                                                           data-method="DELETE"
+                                                           data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
+                                                                    class="icon s7-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>--}}
+
+                                        </table>
+                                        <!-- The Modal -->
+                                        <div class="modal fade" id="myPaymentMethod">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Add Payment Method</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                            {!! csrf_field() !!}
+                                                            <div class="form-group">
+                                                                <label for="payment_method">Payment method</label>
+                                                                <input type="text" class="form-control" placeholder="Payment Method"
+                                                                       name="payment_method">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div><!-- end Tab panes fade-->
+                                <div class="tab-pane fade" id="expenditure_type"><!-- start Tab panes fade-->
+                                    <h2 align="center" style="color:#68A4C4"></h2>
+
+                                    <div class="row">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myExpenditureType"
+                                                style="margin-bottom:10px;">
+                                            Add Expenditure Type
+                                        </button>
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Operations</th>
+                                            </tr>
+                                            </thead>
+                                            {{--<tbody>
+                                            @foreach($positions as $pos)
+                                                <tr>
+                                                    <td>{{$pos->title}}</td>
+                                                    @if($pos->trackable==1)
+                                                        <td>
+                                                            <button class="btn btn-info">Trackable</button>
+                                                        </td>
+                                                    @endif
+                                                    @if($pos->trackable==2 OR $pos->trackable==NULL)
+                                                        <td>
+                                                            <button class="btn btn-danger">Not Trackable</button>
+                                                        </td>
+                                                    @endif
+                                                    <td>
+                                                        <a href="{{ route('position-edit', $pos->id) }}"
+                                                           class="btn btn-danger btn-xs" data-toggle="modal"
+                                                           data-target="#"
+                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
+
+                                                        <a href="{{ route('positions.destroy', $pos->id) }}"
+                                                           data-method="DELETE"
+                                                           data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
+                                                                    class="icon s7-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>--}}
+
+                                        </table>
+                                        <!-- The Modal -->
+                                        <div class="modal fade" id="myExpenditureType">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Add Expenditure Type</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                            {!! csrf_field() !!}
+                                                            <div class="form-group">
+                                                                <label for="expenditure_type">Expenditure Type</label>
+                                                                <input type="text" class="form-control" placeholder="Expenditure Type"
+                                                                       name="expenditure_type">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div><!-- end Tab panes fade-->
+                                <div class="tab-pane fade" id="contribution_type"><!-- start Tab panes fade-->
+                                    <h2 align="center" style="color:#68A4C4"></h2>
+
+                                    <div class="row">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myContributionType"
+                                                style="margin-bottom:10px;">
+                                            Add Contribution Type
+                                        </button>
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Operations</th>
+                                            </tr>
+                                            </thead>
+                                            {{--<tbody>
+                                            @foreach($positions as $pos)
+                                                <tr>
+                                                    <td>{{$pos->title}}</td>
+                                                    @if($pos->trackable==1)
+                                                        <td>
+                                                            <button class="btn btn-info">Trackable</button>
+                                                        </td>
+                                                    @endif
+                                                    @if($pos->trackable==2 OR $pos->trackable==NULL)
+                                                        <td>
+                                                            <button class="btn btn-danger">Not Trackable</button>
+                                                        </td>
+                                                    @endif
+                                                    <td>
+                                                        <a href="{{ route('position-edit', $pos->id) }}"
+                                                           class="btn btn-danger btn-xs" data-toggle="modal"
+                                                           data-target="#"
+                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
+
+                                                        <a href="{{ route('positions.destroy', $pos->id) }}"
+                                                           data-method="DELETE"
+                                                           data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
+                                                                    class="icon s7-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>--}}
+
+                                        </table>
+                                        <!-- The Modal -->
+                                        <div class="modal fade" id="myContributionType">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Add Contribution Type</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                            {!! csrf_field() !!}
+                                                            <div class="form-group">
+                                                                <label for="contribution_type">Contribution Type</label>
+                                                                <input type="text" class="form-control" placeholder="Contribution Type"
+                                                                       name="contribution_type">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div><!-- end Tab panes fade-->
+                                <div class="tab-pane fade" id="activity_type"><!-- start Tab panes fade-->
+                                    <h2 align="center" style="color:#68A4C4"></h2>
+
+                                    <div class="row">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myActivityType"
+                                                style="margin-bottom:10px;">
+                                            Add Activity Type
+                                        </button>
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Operations</th>
+                                            </tr>
+                                            </thead>
+                                            {{--<tbody>
+                                            @foreach($positions as $pos)
+                                                <tr>
+                                                    <td>{{$pos->title}}</td>
+                                                    @if($pos->trackable==1)
+                                                        <td>
+                                                            <button class="btn btn-info">Trackable</button>
+                                                        </td>
+                                                    @endif
+                                                    @if($pos->trackable==2 OR $pos->trackable==NULL)
+                                                        <td>
+                                                            <button class="btn btn-danger">Not Trackable</button>
+                                                        </td>
+                                                    @endif
+                                                    <td>
+                                                        <a href="{{ route('position-edit', $pos->id) }}"
+                                                           class="btn btn-danger btn-xs" data-toggle="modal"
+                                                           data-target="#"
+                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
+
+                                                        <a href="{{ route('positions.destroy', $pos->id) }}"
+                                                           data-method="DELETE"
+                                                           data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
+                                                                    class="icon s7-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>--}}
+
+                                        </table>
+                                        <!-- The Modal -->
+                                        <div class="modal fade" id="myActivityType">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Add Activity Type</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                            {!! csrf_field() !!}
+                                                            <div class="form-group">
+                                                                <label for="activity_type">Activity Type</label>
+                                                                <input type="text" class="form-control" placeholder="Activity Type"
+                                                                       name="activity_type">
                                                             </div>
                                                             <div class="form-group">
                                                                 <input type="submit" class="btn btn-info btn-block" value="Save">
@@ -373,5 +961,6 @@
                     </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

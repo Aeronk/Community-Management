@@ -126,7 +126,7 @@
                 <div class="form-group">
                   <label for="sub_balance" class="col-sm-2 control-label" style="text-align:left"><strong>Subscription Balance</strong><i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
                   <div class="col-sm-6 col-sm-offset-1">
-                    <input type="text" class="form-control" style="border-radius:10px " name="sub_balance" id="sub_balance" placeholder="Subscription Balance" value="{{ old('sub_balance') }}">
+                    <input type="number" class="form-control" style="border-radius:10px " name="sub_balance" id="sub_balance" placeholder="Subscription Balance" value="{{ old('sub_balance') }}">
                     @if ($errors->has('sub_balance'))
                     <span class="invalid-feedback">
                       <strong>{{ $errors->first('sub_balance') }}</strong>

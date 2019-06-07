@@ -39,8 +39,7 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-
-
+        
         Expense::unguard();
 
         $expense = Expense::create([
