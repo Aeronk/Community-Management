@@ -39,7 +39,7 @@ class CategoryController extends Controller
         Validator::make($request->all(),[
             'category' => 'required',
             'votes' => 'numeric',
-            'subscription' => 'required'
+            'subscription' => 'required|numeric'
         ])->validate();
 
         Category::create([

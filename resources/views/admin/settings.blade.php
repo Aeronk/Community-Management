@@ -47,34 +47,24 @@
                                                 <th>Operations</th>
                                             </tr>
                                             </thead>
-                                            {{--<tbody>
-                                            @foreach($positions as $pos)
+                                            <tbody>
+                                            @foreach($titles as $pos)
                                                 <tr>
-                                                    <td>{{$pos->title}}</td>
-                                                    @if($pos->trackable==1)
-                                                        <td>
-                                                            <button class="btn btn-info">Trackable</button>
-                                                        </td>
-                                                    @endif
-                                                    @if($pos->trackable==2 OR $pos->trackable==NULL)
-                                                        <td>
-                                                            <button class="btn btn-danger">Not Trackable</button>
-                                                        </td>
-                                                    @endif
+                                                    <td>{{$pos->name}}</td>
                                                     <td>
-                                                        <a href="{{ route('position-edit', $pos->id) }}"
+                                                        <a href="#{{--{{ route('title.edit', $pos->id) }}--}}"
                                                            class="btn btn-danger btn-xs" data-toggle="modal"
                                                            data-target="#"
                                                            data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
 
-                                                        <a href="{{ route('positions.destroy', $pos->id) }}"
+                                                        <a href="#{{--{{ route('title.destroy', $pos->id) }}--}}"
                                                            data-method="DELETE"
                                                            data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
                                                                     class="icon s7-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                            </tbody>--}}
+                                            </tbody>
 
                                         </table>
                                         <!-- The Modal -->
@@ -381,7 +371,7 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="category">Subscriptions</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="number" min="0" class="form-control"
                                                                        placeholder="Subscription"
                                                                        name="subscription">
                                                             </div>
@@ -1053,4 +1043,19 @@
 @endsection
 @section('page-scripts')
     @include('partials.flash-swal')
+   {{-- <script>
+        $(document).on('click','.open_modal',function(){
+            var url = {!! env('APP_URL') !!};
+            var tour_id= $(this).val();
+            $.get(url + '/' + tour_id, function (data) {
+                //success data
+                console.log(data);
+                $('#tour_id').val(data.id);
+                $('#name').val(data.name);
+                $('#details').val(data.details);
+                $('#btn-save').val("update");
+                $('#myModal').modal('show');
+            })
+        });
+    </script>--}}
 @endsection
