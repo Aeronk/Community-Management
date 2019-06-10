@@ -52,10 +52,15 @@
                                                 <tr>
                                                     <td>{{$pos->name}}</td>
                                                     <td>
-                                                        <a href="#{{--{{ route('title.edit', $pos->id) }}--}}"
+
+                                                        <button class="btn btn-warning btn-xs open_edit_title_modal" value="{{$pos->id}}" data-toggle="modal"
+                                                        data-target="#myModalEdit"
+                                                        ><i class="icon s7-pen"></i></button>
+{{--
+                                                        <a href="#--}}{{--{{ route('title.edit', $pos->id) }}--}}{{--"
                                                            class="btn btn-danger btn-xs" data-toggle="modal"
                                                            data-target="#"
-                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
+                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>--}}
 
                                                         <a href="#{{--{{ route('title.destroy', $pos->id) }}--}}"
                                                            data-method="DELETE"
@@ -93,6 +98,44 @@
                                                             <div class="form-group">
                                                                 <input type="submit" class="btn btn-info btn-block"
                                                                        value="Save">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade" id="myModalEdit">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Edit Title</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post" action="#{{--{{ route('title.update') }}--}}">
+                                                            {!! csrf_field() !!}
+                                                            <div class="form-group">
+                                                                <label for="title">Title</label>
+                                                                <input id="edit-title" type="text" class="form-control"
+                                                                       name="title" value="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Update">
                                                             </div>
                                                         </form>
                                                     </div>
@@ -355,7 +398,7 @@
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
                                                         <form method="post"
-                                                              action="{{ route('category.store') }}">
+                                                              action="{{ route('categories.store') }}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="category">Category</label>
@@ -1043,19 +1086,19 @@
 @endsection
 @section('page-scripts')
     @include('partials.flash-swal')
-   {{-- <script>
-        $(document).on('click','.open_modal',function(){
-            var url = {!! env('APP_URL') !!};
-            var tour_id= $(this).val();
-            $.get(url + '/' + tour_id, function (data) {
+    <script>
+        $('.open_edit_title_modal').on('click',function(){
+
+            var url = "{!! env('APP_URL') !!}";
+
+            var title_id= $(this).val();
+
+            $.get(url + '/title/' + title_id + '/edit', function (data) {
                 //success data
                 console.log(data);
-                $('#tour_id').val(data.id);
-                $('#name').val(data.name);
-                $('#details').val(data.details);
-                $('#btn-save').val("update");
-                $('#myModal').modal('show');
+                $('#edit-title').val(data.name);
+
             })
         });
-    </script>--}}
+    </script>
 @endsection

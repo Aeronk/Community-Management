@@ -31,7 +31,7 @@
             <option>Please Select</option>
             @foreach($ministers as $min)
 
-            <option value="{{$min->first_name}}    {{$min->last_name}}">{{$min->first_name}}    {{$min->last_name}}</option>
+            <option value="{{$min->id}}">{{$min->first_name}}    {{$min->last_name}}</option>
             
 
             @endforeach

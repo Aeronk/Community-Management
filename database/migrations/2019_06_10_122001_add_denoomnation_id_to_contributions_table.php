@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAccountsToExpensesTable extends Migration
+class AddDenoomnationIdToContributionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class AddAccountsToExpensesTable extends Migration
      */
     public function up()
     {
-        Schema::table('expenses', function (Blueprint $table) {
-            $table->string('accounts','255');
-            $table->string('payment_method','255');
-            $table->string('payment_status','255');
+        Schema::table('contributions', function (Blueprint $table) {
+            $table->integer('denomination_id')->after('minister_id');
         });
     }
 
@@ -27,7 +25,7 @@ class AddAccountsToExpensesTable extends Migration
      */
     public function down()
     {
-        Schema::table('expenses', function (Blueprint $table) {
+        Schema::table('contributions', function (Blueprint $table) {
             //
         });
     }

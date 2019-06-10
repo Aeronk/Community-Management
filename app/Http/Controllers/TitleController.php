@@ -66,7 +66,7 @@ class TitleController extends Controller
      */
     public function edit(Title $title)
     {
-        //
+        return $title;
     }
 
     /**

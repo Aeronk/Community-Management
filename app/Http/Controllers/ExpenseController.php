@@ -48,10 +48,9 @@ class ExpenseController extends Controller
             'supplier_name' => $request->input('supplier'),
             'transaction_id' => $request->input('transaction_id'),
             'amount' => $request->input('amount'),
-            'payment_method' => $request->input('payment_method'),
-            'accounts' => $request->input('accounts'),
+            'payment_method_id' => $request->input('payment_method'),
+            'accounts_id' => $request->input('accounts'),
             'payment_status' => $request->input('payment_status'),
-
 
         ]);
         // return redirect()->back()->with('message', 'Expense Added successfully');

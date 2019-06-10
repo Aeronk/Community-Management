@@ -113,8 +113,8 @@ class IndividualContributionController extends Controller
             'transaction_id' => $request->input('transaction_id'),
             'amount' => $request->input('amount_received'),
             'received_from' => $request->input('received_from'),
-            'payment_method' => $request->input('payment_method'),
-            'account' => $request->input('accounts'),
+            'payment_method_id' => $request->input('payment_method'),
+            'account_id' => $request->input('accounts'),
             'date_recieved' => $request->input('date_recieved'),
             'captured_by' => $request->input('captured_by'),
             // 'comment' =>$request->input('comment')
