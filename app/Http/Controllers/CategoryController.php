@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -35,7 +36,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Validator::make($request->all(),[
+            'category' => 'required',
+            'votes' => 'numeric',
+            'subscription' => 'required'
+        ])->validate();
+
+        Category::create([
+            'name' => $request->input('category'),
+            'votes' => $request->input('votes'),
+            'subscription' => $request->input('subscription')
+        ]);
+
+        return redirect()->back()->with('message','Category added successfully');
     }
 
     /**

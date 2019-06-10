@@ -55,7 +55,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         'contribution' => "ContributionController",
         'title' => "TitleController",
         'province' => "ProvinceController",
-        'zone' => "ZoneController"
+        'zone' => "ZoneController",
+        'category' => "CategoryController"
     ]);
 
     Route::get('expense/delete/{expense}', 'ExpenseController@destroy')->name('expenses.delete');

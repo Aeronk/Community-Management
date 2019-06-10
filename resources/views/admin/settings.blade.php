@@ -365,13 +365,25 @@
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
                                                         <form method="post"
-                                                              action="#{{--{{ route('positions.store') }}--}}">
+                                                              action="{{ route('category.store') }}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="category">Category</label>
                                                                 <input type="text" class="form-control"
                                                                        placeholder="Category Name"
                                                                        name="category">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="category">Votes</label>
+                                                                <input type="number" min="0" class="form-control"
+                                                                       placeholder="Votes"
+                                                                       name="votes">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="category">Subscriptions</label>
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="Subscription"
+                                                                       name="subscription">
                                                             </div>
                                                             <div class="form-group">
                                                                 <input type="submit" class="btn btn-info btn-block"
