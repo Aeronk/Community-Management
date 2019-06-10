@@ -1,4 +1,3 @@
-
 @extends('layout')
 @section('title','General Settings')
 
@@ -36,7 +35,8 @@
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1"
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#myModal1"
                                                 style="margin-bottom:10px;">
                                             Add Title
                                         </button>
@@ -85,27 +85,32 @@
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Add Title</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
                                                     </div>
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                        <form method="post" action="{{ route('title.store') }}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="title">Title</label>
-                                                                <input type="text" class="form-control" placeholder="Title Name"
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="Title Name"
                                                                        name="title">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Save">
                                                             </div>
                                                         </form>
                                                     </div>
 
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
                                                         </button>
                                                     </div>
 
@@ -120,7 +125,8 @@
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myProvince"
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#myProvince"
                                                 style="margin-bottom:10px;">
                                             Add Province
                                         </button>
@@ -169,27 +175,33 @@
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Add Province</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
                                                     </div>
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                        <form method="post"
+                                                              action="#{{--{{ route('positions.store') }}--}}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="province">Province</label>
-                                                                <input type="text" class="form-control" placeholder="Province Name"
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="Province Name"
                                                                        name="province">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Save">
                                                             </div>
                                                         </form>
                                                     </div>
 
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
                                                         </button>
                                                     </div>
 
@@ -204,7 +216,8 @@
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myZone"
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#myZone"
                                                 style="margin-bottom:10px;">
                                             Add Zone
                                         </button>
@@ -253,27 +266,33 @@
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Add Zone</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
                                                     </div>
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                        <form method="post"
+                                                              action="#{{--{{ route('positions.store') }}--}}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="zone">Zone</label>
-                                                                <input type="text" class="form-control" placeholder="Zone Name"
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="Zone Name"
                                                                        name="zone">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Save">
                                                             </div>
                                                         </form>
                                                     </div>
 
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
                                                         </button>
                                                     </div>
 
@@ -288,7 +307,8 @@
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myCategory"
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#myCategory"
                                                 style="margin-bottom:10px;">
                                             Add Category
                                         </button>
@@ -337,27 +357,33 @@
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Add Category</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
                                                     </div>
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                        <form method="post"
+                                                              action="#{{--{{ route('positions.store') }}--}}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="category">Category</label>
-                                                                <input type="text" class="form-control" placeholder="Category Name"
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="Category Name"
                                                                        name="category">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Save">
                                                             </div>
                                                         </form>
                                                     </div>
 
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
                                                         </button>
                                                     </div>
 
@@ -372,7 +398,8 @@
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myCountry"
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#myCountry"
                                                 style="margin-bottom:10px;">
                                             Add Other Country
                                         </button>
@@ -421,27 +448,33 @@
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Add Other Country</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
                                                     </div>
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                        <form method="post"
+                                                              action="#{{--{{ route('positions.store') }}--}}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="country">Country</label>
-                                                                <input type="text" class="form-control" placeholder="Country Name"
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="Country Name"
                                                                        name="country">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Save">
                                                             </div>
                                                         </form>
                                                     </div>
 
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
                                                         </button>
                                                     </div>
 
@@ -456,7 +489,8 @@
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myMaritalStatus"
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#myMaritalStatus"
                                                 style="margin-bottom:10px;">
                                             Add Marital Status
                                         </button>
@@ -505,27 +539,33 @@
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Add Marital Status</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
                                                     </div>
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                        <form method="post"
+                                                              action="#{{--{{ route('positions.store') }}--}}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="marital_status">Marital Status</label>
-                                                                <input type="text" class="form-control" placeholder="Marital Status"
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="Marital Status"
                                                                        name="marital_status">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Save">
                                                             </div>
                                                         </form>
                                                     </div>
 
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
                                                         </button>
                                                     </div>
 
@@ -540,7 +580,8 @@
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myAccount"
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#myAccount"
                                                 style="margin-bottom:10px;">
                                             Add Accounts
                                         </button>
@@ -589,27 +630,33 @@
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Add Accounts</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
                                                     </div>
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                        <form method="post"
+                                                              action="#{{--{{ route('positions.store') }}--}}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="account">Account</label>
-                                                                <input type="text" class="form-control" placeholder="Account Name"
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="Account Name"
                                                                        name="account">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Save">
                                                             </div>
                                                         </form>
                                                     </div>
 
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
                                                         </button>
                                                     </div>
 
@@ -624,7 +671,8 @@
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myPaymentMethod"
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#myPaymentMethod"
                                                 style="margin-bottom:10px;">
                                             Add Payment Method
                                         </button>
@@ -673,27 +721,33 @@
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Add Payment Method</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
                                                     </div>
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                        <form method="post"
+                                                              action="#{{--{{ route('positions.store') }}--}}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="payment_method">Payment method</label>
-                                                                <input type="text" class="form-control" placeholder="Payment Method"
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="Payment Method"
                                                                        name="payment_method">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Save">
                                                             </div>
                                                         </form>
                                                     </div>
 
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
                                                         </button>
                                                     </div>
 
@@ -708,7 +762,8 @@
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myExpenditureType"
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#myExpenditureType"
                                                 style="margin-bottom:10px;">
                                             Add Expenditure Type
                                         </button>
@@ -757,27 +812,33 @@
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Add Expenditure Type</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
                                                     </div>
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                        <form method="post"
+                                                              action="#{{--{{ route('positions.store') }}--}}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="expenditure_type">Expenditure Type</label>
-                                                                <input type="text" class="form-control" placeholder="Expenditure Type"
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="Expenditure Type"
                                                                        name="expenditure_type">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Save">
                                                             </div>
                                                         </form>
                                                     </div>
 
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
                                                         </button>
                                                     </div>
 
@@ -792,7 +853,8 @@
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myContributionType"
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#myContributionType"
                                                 style="margin-bottom:10px;">
                                             Add Contribution Type
                                         </button>
@@ -841,27 +903,33 @@
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Add Contribution Type</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
                                                     </div>
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                        <form method="post"
+                                                              action="#{{--{{ route('positions.store') }}--}}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="contribution_type">Contribution Type</label>
-                                                                <input type="text" class="form-control" placeholder="Contribution Type"
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="Contribution Type"
                                                                        name="contribution_type">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Save">
                                                             </div>
                                                         </form>
                                                     </div>
 
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
                                                         </button>
                                                     </div>
 
@@ -876,7 +944,8 @@
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myActivityType"
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#myActivityType"
                                                 style="margin-bottom:10px;">
                                             Add Activity Type
                                         </button>
@@ -925,27 +994,33 @@
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Add Activity Type</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
                                                     </div>
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                        <form method="post" action="#{{--{{ route('positions.store') }}--}}">
+                                                        <form method="post"
+                                                              action="#{{--{{ route('positions.store') }}--}}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="activity_type">Activity Type</label>
-                                                                <input type="text" class="form-control" placeholder="Activity Type"
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="Activity Type"
                                                                        name="activity_type">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="submit" class="btn btn-info btn-block" value="Save">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Save">
                                                             </div>
                                                         </form>
                                                     </div>
 
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
                                                         </button>
                                                     </div>
 
@@ -959,8 +1034,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>
-    </div>
+@endsection
+@section('page-scripts')
+    @include('partials.flash-swal')
 @endsection

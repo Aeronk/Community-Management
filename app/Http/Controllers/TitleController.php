@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Title;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TitleController extends Controller
 {
@@ -35,9 +36,15 @@ class TitleController extends Controller
      */
     public function store(Request $request)
     {
+        Validator::make($request->all(),[
+            'title' => 'required'
+        ])->validate();
+
         Title::create([
             'name' => $request->input('title')
         ]);
+
+        return redirect()->back()->with('message', 'Title Added successfully');
     }
 
     /**
