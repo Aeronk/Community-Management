@@ -53,7 +53,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         'parachurch' => "ParaChurchController",
         'activities' => "ActivityController",
         'contribution' => "ContributionController",
-        'title' => "TitleController"
+        'title' => "TitleController",
+        'province' => "ProvinceController"
     ]);
 
     Route::get('expense/delete/{expense}', 'ExpenseController@destroy')->name('expenses.delete');

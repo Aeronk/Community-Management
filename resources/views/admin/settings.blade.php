@@ -183,7 +183,7 @@
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
                                                         <form method="post"
-                                                              action="#{{--{{ route('positions.store') }}--}}">
+                                                              action="{{ route('province.store') }}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="province">Province</label>
