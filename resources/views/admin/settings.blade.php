@@ -56,16 +56,18 @@
                                                         <button class="btn btn-warning btn-xs open_edit_title_modal" value="{{$pos->id}}" data-toggle="modal"
                                                         data-target="#myModalEdit"
                                                         ><i class="icon s7-pen"></i></button>
+
+                                                        <button class="btn btn-danger btn-xs delete_title" value="{{$pos->id}}"><i class="icon s7-trash"></i></button>
 {{--
                                                         <a href="#--}}{{--{{ route('title.edit', $pos->id) }}--}}{{--"
                                                            class="btn btn-danger btn-xs" data-toggle="modal"
                                                            data-target="#"
                                                            data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>--}}
 
-                                                        <a href="#{{--{{ route('title.destroy', $pos->id) }}--}}"
+                                                        {{--<a href="#--}}{{--{{ route('title.destroy', $pos->id) }}--}}{{--"
                                                            data-method="DELETE"
                                                            data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
-                                                                    class="icon s7-trash"></i></a>
+                                                                    class="icon s7-trash"></i></a>--}}
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -126,8 +128,10 @@
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                        <form method="post" action="#{{--{{ route('title.update') }}--}}">
+                                                        <form method="post" action="{{ route('update.title') }}">
                                                             {!! csrf_field() !!}
+                                                            <input id="edit-title-id" type="hidden" class="form-control"
+                                                                   name="id" value="">
                                                             <div class="form-group">
                                                                 <label for="title">Title</label>
                                                                 <input id="edit-title" type="text" class="form-control"
@@ -1087,9 +1091,9 @@
 @section('page-scripts')
     @include('partials.flash-swal')
     <script>
-        $('.open_edit_title_modal').on('click',function(){
+        var url = "{!! env('APP_URL') !!}";
 
-            var url = "{!! env('APP_URL') !!}";
+        $('.open_edit_title_modal').on('click',function(){
 
             var title_id= $(this).val();
 
@@ -1097,8 +1101,38 @@
                 //success data
                 console.log(data);
                 $('#edit-title').val(data.name);
-
+                $('#edit-title-id').val(data.id);
             })
         });
+
+        $('.delete_title').on('click', function(){
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+
+                        var title_id= $(this).val();
+
+                        $.get(url + '/title/delete/' + title_id, function (response) {
+                            //success data
+                            if(response.answer === 'deleted'){
+                                swal("Done!", "Title has been deleted successfully!", {
+                                    icon: "success",
+                                });
+                                 location.reload()
+                            }
+                        })
+                    } else {
+                        swal("Cool!","Your title is safe!",{
+                            icon: "success",
+                        });
+                    }
+                });
+        })
     </script>
 @endsection

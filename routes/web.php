@@ -60,6 +60,12 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     ]);
 
     Route::get('expense/delete/{expense}', 'ExpenseController@destroy')->name('expenses.delete');
+
+    //This updates the title
+    Route::post('title/update', 'TitleController@update')->name('update.title');
+    //This deletes the title
+    Route::get('title/delete/{id}', 'TitleController@destroy')->name('delete.title');
+
     Route::get('admin/settings','AdminController@settingsView')->name('admin.settings');
 
 });

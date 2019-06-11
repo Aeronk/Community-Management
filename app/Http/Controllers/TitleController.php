@@ -59,10 +59,8 @@ class TitleController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Title  $title
-     * @return \Illuminate\Http\Response
+     * @param Title $title
+     * @return Title
      */
     public function edit(Title $title)
     {
@@ -76,9 +74,23 @@ class TitleController extends Controller
      * @param  \App\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Title $title)
+    public function update(Request $request)
     {
-        //
+        Validator::make($request->all(),[
+            'id' => 'required',
+            'title' => 'required'
+        ])->validate();
+
+        $title = Title::findOrFail($request->input('id'));
+
+        $update = $title->update([
+            'name' => $request->input('title')
+        ]);
+
+        if ($update){
+            return redirect()->back()->with('message', 'Title was updated successfully', 'success');
+        }else return redirect()->back()->with('message', 'Error when updating title.', 'error');
+
     }
 
     /**
@@ -87,8 +99,12 @@ class TitleController extends Controller
      * @param  \App\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Title $title)
+    public function destroy($id)
     {
-        //
+        $delete = Title::findOrFail($id)->delete();
+
+        if($delete){
+            return response()->json(['answer' => 'deleted']);
+        }
     }
 }
