@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Country;
+use App\MaritalStatus;
 use App\Province;
 use App\Title;
 use App\Zone;
@@ -18,13 +19,15 @@ class AdminController extends Controller
         $zones = Zone::all();
         $categories = Category::all();
         $countries = Country::all();
+        $marital_statuses = MaritalStatus::all();
 
         return view('admin.settings',[
             'titles' => $titles,
             'provinces' => $provinces,
             'zones' => $zones,
             'categories' => $categories,
-            'countries' => $countries
+            'countries' => $countries,
+            'marital_statuses' => $marital_statuses
         ]);
     }
 }

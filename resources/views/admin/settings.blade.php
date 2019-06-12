@@ -669,34 +669,24 @@
                                                 <th>Operations</th>
                                             </tr>
                                             </thead>
-                                            {{--<tbody>
-                                            @foreach($positions as $pos)
+                                            <tbody>
+                                            @foreach($marital_statuses as $ms)
                                                 <tr>
-                                                    <td>{{$pos->title}}</td>
-                                                    @if($pos->trackable==1)
-                                                        <td>
-                                                            <button class="btn btn-info">Trackable</button>
-                                                        </td>
-                                                    @endif
-                                                    @if($pos->trackable==2 OR $pos->trackable==NULL)
-                                                        <td>
-                                                            <button class="btn btn-danger">Not Trackable</button>
-                                                        </td>
-                                                    @endif
+                                                    <td>{{$ms->name}}</td>
                                                     <td>
-                                                        <a href="{{ route('position-edit', $pos->id) }}"
-                                                           class="btn btn-danger btn-xs" data-toggle="modal"
-                                                           data-target="#"
-                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
 
-                                                        <a href="{{ route('positions.destroy', $pos->id) }}"
-                                                           data-method="DELETE"
-                                                           data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
-                                                                    class="icon s7-trash"></i></a>
+                                                        <button class="btn btn-warning btn-xs open_edit_ms_modal"
+                                                                value="{{$ms->id}}" data-toggle="modal"
+                                                                data-target="#myEditMaritalStatus"
+                                                        ><i class="icon s7-pen"></i></button>
+
+                                                        <button class="btn btn-danger btn-xs delete_ms"
+                                                                value="{{$ms->id}}"><i class="icon s7-trash"></i>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                            </tbody>--}}
+                                            </tbody>
 
                                         </table>
                                         <!-- The Modal -->
@@ -715,7 +705,7 @@
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
                                                         <form method="post"
-                                                              action="#{{--{{ route('positions.store') }}--}}">
+                                                              action="{{ route('marital_status.store') }}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="marital_status">Marital Status</label>
@@ -726,6 +716,49 @@
                                                             <div class="form-group">
                                                                 <input type="submit" class="btn btn-info btn-block"
                                                                        value="Save">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade" id="myEditMaritalStatus">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Edit Marital Status</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post"
+                                                              action="{{ route('update.marital_status') }}">
+                                                            {!! csrf_field() !!}
+                                                            <input id="edit-ms-id" type="hidden"
+                                                                   class="form-control"
+                                                                   name="id" value="">
+                                                            <div class="form-group">
+                                                                <label for="marital_status">Country</label>
+                                                                <input id="edit-ms" type="text"
+                                                                       class="form-control"
+                                                                       name="marital_status" value="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Update">
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1448,7 +1481,7 @@
                 });
         })
 
-        // Category
+        // Country
         $('.open_edit_country_modal').on('click', function () {
 
             var country_id = $(this).val();
@@ -1494,6 +1527,65 @@
                             //success data
                             if (response.answer === 'deleted') {
                                 swal("Done!", "Country has been deleted successfully!", {
+                                    icon: "success",
+                                });
+                                location.reload()
+                            }
+                        })
+                    } /*else {
+                        swal("Cool!", "Your zone is safe!", {
+                            icon: "success",
+                        });
+                    }*/
+                });
+        })
+
+        // Marital Status
+        $('.open_edit_ms_modal').on('click', function () {
+
+            var ms_id = $(this).val();
+
+            $.get(url + '/marital_status/' + ms_id + '/edit', function (data) {
+                //success data
+                //console.log(data);
+                $('#edit-ms').val(data.name);
+                $('#edit-ms-id').val(data.id);
+            })
+        });
+
+        $('.delete_ms').on('click', function () {
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this.",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Cancel",
+                        value: null,
+                        visible: true,
+                        className: "",
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "OK",
+                        value: true,
+                        visible: true,
+                        className: "",
+                        closeModal: false
+                    }
+                },
+                dangerMode: true,
+
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+
+                        var ms_id = $(this).val();
+
+                        $.get(url + '/marital_status/delete/' + ms_id, function (response) {
+                            //success data
+                            if (response.answer === 'deleted') {
+                                swal("Done!", "Marital status has been deleted successfully!", {
                                     icon: "success",
                                 });
                                 location.reload()

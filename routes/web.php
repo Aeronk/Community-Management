@@ -57,7 +57,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         'province' => "ProvinceController",
         'zone' => "ZoneController",
         'categories' => "CategoryController",
-        'country' => "CountryController"
+        'country' => "CountryController",
+        'marital_status' => "MaritalStatusController"
     ]);
 
     Route::get('expense/delete/{expense}', 'ExpenseController@destroy')->name('expenses.delete');
@@ -82,6 +83,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     //Update Country
     Route::post('country/update', 'CountryController@update')->name('update.country');
     Route::get('country/delete/{id}', 'CountryController@destroy');
+
+    //Update Marital Status
+    Route::post('marital_status/update', 'MaritalStatusController@update')->name('update.marital_status');
+    Route::get('marital_status/delete/{id}', 'MaritalStatusController@destroy');
 
     Route::get('admin/settings','AdminController@settingsView')->name('admin.settings');
 
