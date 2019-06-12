@@ -66,7 +66,7 @@ class ProvinceController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Province::findOrFail($id);
     }
 
     /**
@@ -76,9 +76,22 @@ class ProvinceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        Validator::make($request->all(),[
+            'id' => 'required',
+            'province' => 'required'
+        ])->validate();
+
+        $province = Province::findOrFail($request->input('id'));
+
+        $update = $province->update([
+            'name' => $request->input('province')
+        ]);
+
+        if ($update){
+            return redirect()->back()->with('message', 'Province was updated successfully', 'success');
+        }else return redirect()->back()->with('message', 'Error when updating province.', 'error');
     }
 
     /**
@@ -89,6 +102,10 @@ class ProvinceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = Province::findOrFail($id)->delete();
+
+        if($delete){
+            return response()->json(['answer' => 'deleted']);
+        }
     }
 }

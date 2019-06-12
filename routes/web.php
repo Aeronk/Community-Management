@@ -66,6 +66,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     //This deletes the title
     Route::get('title/delete/{id}', 'TitleController@destroy')->name('delete.title');
 
+    //Update Province
+    Route::post('province/update', 'ProvinceController@update')->name('update.province');
+    Route::get('province/delete/{id}', 'ProvinceController@destroy');
+
     Route::get('admin/settings','AdminController@settingsView')->name('admin.settings');
 
 });

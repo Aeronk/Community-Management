@@ -53,21 +53,14 @@
                                                     <td>{{$pos->name}}</td>
                                                     <td>
 
-                                                        <button class="btn btn-warning btn-xs open_edit_title_modal" value="{{$pos->id}}" data-toggle="modal"
-                                                        data-target="#myModalEdit"
+                                                        <button class="btn btn-warning btn-xs open_edit_title_modal"
+                                                                value="{{$pos->id}}" data-toggle="modal"
+                                                                data-target="#myModalEdit"
                                                         ><i class="icon s7-pen"></i></button>
 
-                                                        <button class="btn btn-danger btn-xs delete_title" value="{{$pos->id}}"><i class="icon s7-trash"></i></button>
-{{--
-                                                        <a href="#--}}{{--{{ route('title.edit', $pos->id) }}--}}{{--"
-                                                           class="btn btn-danger btn-xs" data-toggle="modal"
-                                                           data-target="#"
-                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>--}}
-
-                                                        {{--<a href="#--}}{{--{{ route('title.destroy', $pos->id) }}--}}{{--"
-                                                           data-method="DELETE"
-                                                           data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
-                                                                    class="icon s7-trash"></i></a>--}}
+                                                        <button class="btn btn-danger btn-xs delete_title"
+                                                                value="{{$pos->id}}"><i class="icon s7-trash"></i>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -174,35 +167,22 @@
                                                 <th>Operations</th>
                                             </tr>
                                             </thead>
-                                            {{--<tbody>
-                                            @foreach($positions as $pos)
+                                            @foreach($provinces as $prov)
                                                 <tr>
-                                                    <td>{{$pos->title}}</td>
-                                                    @if($pos->trackable==1)
-                                                        <td>
-                                                            <button class="btn btn-info">Trackable</button>
-                                                        </td>
-                                                    @endif
-                                                    @if($pos->trackable==2 OR $pos->trackable==NULL)
-                                                        <td>
-                                                            <button class="btn btn-danger">Not Trackable</button>
-                                                        </td>
-                                                    @endif
+                                                    <td>{{$prov->name}}</td>
                                                     <td>
-                                                        <a href="{{ route('position-edit', $pos->id) }}"
-                                                           class="btn btn-danger btn-xs" data-toggle="modal"
-                                                           data-target="#"
-                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
 
-                                                        <a href="{{ route('positions.destroy', $pos->id) }}"
-                                                           data-method="DELETE"
-                                                           data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
-                                                                    class="icon s7-trash"></i></a>
+                                                        <button class="btn btn-warning btn-xs open_edit_province_modal"
+                                                                value="{{$prov->id}}" data-toggle="modal"
+                                                                data-target="#myEditProvince"
+                                                        ><i class="icon s7-pen"></i></button>
+
+                                                        <button class="btn btn-danger btn-xs delete_province"
+                                                                value="{{$prov->id}}"><i class="icon s7-trash"></i>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                            </tbody>--}}
-
                                         </table>
                                         <!-- The Modal -->
                                         <div class="modal fade" id="myProvince">
@@ -231,6 +211,49 @@
                                                             <div class="form-group">
                                                                 <input type="submit" class="btn btn-info btn-block"
                                                                        value="Save">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade" id="myEditProvince">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Edit Province</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post"
+                                                              action="{{ route('update.province') }}">
+                                                            {!! csrf_field() !!}
+                                                            <input id="edit-province-id" type="hidden"
+                                                                   class="form-control"
+                                                                   name="id" value="">
+                                                            <div class="form-group">
+                                                                <label for="title">Province</label>
+                                                                <input id="edit-province" type="text"
+                                                                       class="form-control"
+                                                                       name="province" value="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Update">
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1093,24 +1116,26 @@
     <script>
         var url = "{!! env('APP_URL') !!}";
 
-        $('.open_edit_title_modal').on('click',function(){
+        // Title
+        $('.open_edit_title_modal').on('click', function () {
 
-            var title_id= $(this).val();
+            var title_id = $(this).val();
 
             $.get(url + '/title/' + title_id + '/edit', function (data) {
                 //success data
-                console.log(data);
+                // console.log(data);
                 $('#edit-title').val(data.name);
                 $('#edit-title-id').val(data.id);
             })
         });
 
-        $('.delete_title').on('click', function(){
+        $('.delete_title').on('click', function () {
             swal({
                 title: "Are you sure?",
                 text: "Once deleted, you will not be able to recover this.",
-            icon: "warning",
-                buttons: { cancel: {
+                icon: "warning",
+                buttons: {
+                    cancel: {
                         text: "Cancel",
                         value: null,
                         visible: true,
@@ -1131,23 +1156,83 @@
                 .then((willDelete) => {
                     if (willDelete) {
 
-                        var title_id= $(this).val();
+                        var title_id = $(this).val();
 
                         $.get(url + '/title/delete/' + title_id, function (response) {
                             //success data
-                            if(response.answer === 'deleted'){
+                            if (response.answer === 'deleted') {
                                 swal("Done!", "Title has been deleted successfully!", {
                                     icon: "success",
                                 });
-                                 location.reload()
+                                location.reload()
                             }
                         })
                     } else {
-                        swal("Cool!","Your title is safe!",{
+                        swal("Cool!", "Your title is safe!", {
                             icon: "success",
                         });
                     }
                 });
         })
+
+        // Province
+        $('.open_edit_province_modal').on('click', function () {
+
+            var province_id = $(this).val();
+
+            $.get(url + '/province/' + province_id + '/edit', function (data) {
+                //success data
+                console.log(data);
+                $('#edit-province').val(data.name);
+                $('#edit-province-id').val(data.id);
+            })
+        });
+
+        $('.delete_province').on('click', function () {
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this.",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Cancel",
+                        value: null,
+                        visible: true,
+                        className: "",
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "OK",
+                        value: true,
+                        visible: true,
+                        className: "",
+                        closeModal: false
+                    }
+                },
+                dangerMode: true,
+
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+
+                        var province_id = $(this).val();
+
+                        $.get(url + '/province/delete/' + province_id, function (response) {
+                            //success data
+                            if (response.answer === 'deleted') {
+                                swal("Done!", "Province has been deleted successfully!", {
+                                    icon: "success",
+                                });
+                                location.reload()
+                            }
+                        })
+                    } else {
+                        swal("Cool!", "Your province is safe!", {
+                            icon: "success",
+                        });
+                    }
+                });
+        })
+
     </script>
 @endsection
