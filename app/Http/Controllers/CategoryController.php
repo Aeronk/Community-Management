@@ -63,14 +63,12 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
+     * @param Category $category
+     * @return Category
      */
     public function edit(Category $category)
     {
-        //
+        return $category;
     }
 
     /**
@@ -80,9 +78,22 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request)
     {
-        //
+        Validator::make($request->all(),[
+            'id' => 'required',
+            'category' => 'required'
+        ])->validate();
+
+        $category = Category::findOrFail($request->input('id'));
+
+        $update = $category->update([
+            'name' => $request->input('category')
+        ]);
+
+        if ($update){
+            return redirect()->back()->with('message', 'Category was updated successfully', 'success');
+        }else return redirect()->back()->with('message', 'Error when updating category.', 'error');
     }
 
     /**
@@ -91,8 +102,12 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $delete = Category::findOrFail($id)->delete();
+
+        if($delete){
+            return response()->json(['answer' => 'deleted']);
+        }
     }
 }

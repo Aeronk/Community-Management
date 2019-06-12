@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Zone;
+use App\Category;
+use App\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class ZoneController extends Controller
+class CountryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,71 +38,70 @@ class ZoneController extends Controller
     public function store(Request $request)
     {
         Validator::make($request->all(),[
-            'zone' => 'required'
+            'country' => 'required'
         ])->validate();
 
-        Zone::create([
-           'name' => $request->input('zone')
+        Country::create([
+            'name' => $request->input('country')
         ]);
 
-        return redirect()->back()->with('message', 'Zone Added successfully');
-
+        return redirect()->back()->with('message', 'Country Added successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Zone  $zone
+     * @param  \App\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function show(Zone $zone)
+    public function show(Country $country)
     {
         //
     }
 
     /**
-     * @param Zone $zone
-     * @return Zone
+     * @param Country $country
+     * @return Country
      */
-    public function edit(Zone $zone)
+    public function edit(Country $country)
     {
-        return $zone;
+        return $country;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Zone  $zone
+     * @param  \App\Country  $country
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
         Validator::make($request->all(),[
             'id' => 'required',
-            'zone' => 'required'
+            'country' => 'required'
         ])->validate();
 
-        $zone = Zone::findOrFail($request->input('id'));
+        $country = Country::findOrFail($request->input('id'));
 
-        $update = $zone->update([
-            'name' => $request->input('zone')
+        $update = $country->update([
+            'name' => $request->input('country')
         ]);
 
         if ($update){
-            return redirect()->back()->with('message', 'Zone was updated successfully', 'success');
-        }else return redirect()->back()->with('message', 'Error when updating zone.', 'error');
+            return redirect()->back()->with('message', 'Country was updated successfully', 'success');
+        }else return redirect()->back()->with('message', 'Error when updating country.', 'error');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Zone  $zone
+     * @param  \App\Country  $country
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $delete = Zone::findOrFail($id)->delete();
+        $delete = Country::findOrFail($id)->delete();
 
         if($delete){
             return response()->json(['answer' => 'deleted']);

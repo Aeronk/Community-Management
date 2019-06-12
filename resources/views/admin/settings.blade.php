@@ -268,7 +268,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
 
                                 </div><!-- end Tab panes fade-->
@@ -288,34 +287,24 @@
                                                 <th>Operations</th>
                                             </tr>
                                             </thead>
-                                            {{--<tbody>
-                                            @foreach($positions as $pos)
+                                            <tbody>
+                                            @foreach($zones as $zone)
                                                 <tr>
-                                                    <td>{{$pos->title}}</td>
-                                                    @if($pos->trackable==1)
-                                                        <td>
-                                                            <button class="btn btn-info">Trackable</button>
-                                                        </td>
-                                                    @endif
-                                                    @if($pos->trackable==2 OR $pos->trackable==NULL)
-                                                        <td>
-                                                            <button class="btn btn-danger">Not Trackable</button>
-                                                        </td>
-                                                    @endif
+                                                    <td>{{$zone->name}}</td>
                                                     <td>
-                                                        <a href="{{ route('position-edit', $pos->id) }}"
-                                                           class="btn btn-danger btn-xs" data-toggle="modal"
-                                                           data-target="#"
-                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
 
-                                                        <a href="{{ route('positions.destroy', $pos->id) }}"
-                                                           data-method="DELETE"
-                                                           data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
-                                                                    class="icon s7-trash"></i></a>
+                                                        <button class="btn btn-warning btn-xs open_edit_zone_modal"
+                                                                value="{{$zone->id}}" data-toggle="modal"
+                                                                data-target="#myEditZone"
+                                                        ><i class="icon s7-pen"></i></button>
+
+                                                        <button class="btn btn-danger btn-xs delete_zone"
+                                                                value="{{$zone->id}}"><i class="icon s7-trash"></i>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                            </tbody>--}}
+                                            </tbody>
 
                                         </table>
                                         <!-- The Modal -->
@@ -359,7 +348,49 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="modal fade" id="myEditZone">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
 
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Edit Zone</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post"
+                                                              action="{{ route('update.zone') }}">
+                                                            {!! csrf_field() !!}
+                                                            <input id="edit-zone-id" type="hidden"
+                                                                   class="form-control"
+                                                                   name="id" value="">
+                                                            <div class="form-group">
+                                                                <label for="zone">Zone</label>
+                                                                <input id="edit-zone" type="text"
+                                                                       class="form-control"
+                                                                       name="zone" value="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Update">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                 </div><!-- end Tab panes fade-->
@@ -379,34 +410,24 @@
                                                 <th>Operations</th>
                                             </tr>
                                             </thead>
-                                            {{--<tbody>
-                                            @foreach($positions as $pos)
+                                            <tbody>
+                                            @foreach($categories as $category)
                                                 <tr>
-                                                    <td>{{$pos->title}}</td>
-                                                    @if($pos->trackable==1)
-                                                        <td>
-                                                            <button class="btn btn-info">Trackable</button>
-                                                        </td>
-                                                    @endif
-                                                    @if($pos->trackable==2 OR $pos->trackable==NULL)
-                                                        <td>
-                                                            <button class="btn btn-danger">Not Trackable</button>
-                                                        </td>
-                                                    @endif
+                                                    <td>{{$category->name}}</td>
                                                     <td>
-                                                        <a href="{{ route('position-edit', $pos->id) }}"
-                                                           class="btn btn-danger btn-xs" data-toggle="modal"
-                                                           data-target="#"
-                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
 
-                                                        <a href="{{ route('positions.destroy', $pos->id) }}"
-                                                           data-method="DELETE"
-                                                           data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
-                                                                    class="icon s7-trash"></i></a>
+                                                        <button class="btn btn-warning btn-xs open_edit_category_modal"
+                                                                value="{{$category->id}}" data-toggle="modal"
+                                                                data-target="#myEditCategory"
+                                                        ><i class="icon s7-pen"></i></button>
+
+                                                        <button class="btn btn-danger btn-xs delete_category"
+                                                                value="{{$category->id}}"><i class="icon s7-trash"></i>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                            </tbody>--}}
+                                            </tbody>
 
                                         </table>
                                         <!-- The Modal -->
@@ -462,7 +483,49 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="modal fade" id="myEditCategory">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
 
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Edit Category</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post"
+                                                              action="{{ route('update.category') }}">
+                                                            {!! csrf_field() !!}
+                                                            <input id="edit-category-id" type="hidden"
+                                                                   class="form-control"
+                                                                   name="id" value="">
+                                                            <div class="form-group">
+                                                                <label for="category">Category</label>
+                                                                <input id="edit-category" type="text"
+                                                                       class="form-control"
+                                                                       name="category" value="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Update">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                 </div><!-- end Tab panes fade-->
@@ -473,7 +536,7 @@
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
                                                 data-target="#myCountry"
                                                 style="margin-bottom:10px;">
-                                            Add Other Country
+                                            Add Country
                                         </button>
                                         <table class="table table-striped">
                                             <thead>
@@ -482,34 +545,24 @@
                                                 <th>Operations</th>
                                             </tr>
                                             </thead>
-                                            {{--<tbody>
-                                            @foreach($positions as $pos)
+                                            <tbody>
+                                            @foreach($countries as $country)
                                                 <tr>
-                                                    <td>{{$pos->title}}</td>
-                                                    @if($pos->trackable==1)
-                                                        <td>
-                                                            <button class="btn btn-info">Trackable</button>
-                                                        </td>
-                                                    @endif
-                                                    @if($pos->trackable==2 OR $pos->trackable==NULL)
-                                                        <td>
-                                                            <button class="btn btn-danger">Not Trackable</button>
-                                                        </td>
-                                                    @endif
+                                                    <td>{{$country->name}}</td>
                                                     <td>
-                                                        <a href="{{ route('position-edit', $pos->id) }}"
-                                                           class="btn btn-danger btn-xs" data-toggle="modal"
-                                                           data-target="#"
-                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
 
-                                                        <a href="{{ route('positions.destroy', $pos->id) }}"
-                                                           data-method="DELETE"
-                                                           data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
-                                                                    class="icon s7-trash"></i></a>
+                                                        <button class="btn btn-warning btn-xs open_edit_country_modal"
+                                                                value="{{$country->id}}" data-toggle="modal"
+                                                                data-target="#myEditCountry"
+                                                        ><i class="icon s7-pen"></i></button>
+
+                                                        <button class="btn btn-danger btn-xs delete_country"
+                                                                value="{{$country->id}}"><i class="icon s7-trash"></i>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                            </tbody>--}}
+                                            </tbody>
 
                                         </table>
                                         <!-- The Modal -->
@@ -528,7 +581,7 @@
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
                                                         <form method="post"
-                                                              action="#{{--{{ route('positions.store') }}--}}">
+                                                              action="{{ route('country.store') }}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="country">Country</label>
@@ -539,6 +592,49 @@
                                                             <div class="form-group">
                                                                 <input type="submit" class="btn btn-info btn-block"
                                                                        value="Save">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade" id="myEditCountry">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Edit Country</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post"
+                                                              action="{{ route('update.country') }}">
+                                                            {!! csrf_field() !!}
+                                                            <input id="edit-country-id" type="hidden"
+                                                                   class="form-control"
+                                                                   name="id" value="">
+                                                            <div class="form-group">
+                                                                <label for="country">Country</label>
+                                                                <input id="edit-country" type="text"
+                                                                       class="form-control"
+                                                                       name="country" value="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Update">
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1167,11 +1263,11 @@
                                 location.reload()
                             }
                         })
-                    } else {
+                    } /*else {
                         swal("Cool!", "Your title is safe!", {
                             icon: "success",
                         });
-                    }
+                    }*/
                 });
         })
 
@@ -1182,7 +1278,7 @@
 
             $.get(url + '/province/' + province_id + '/edit', function (data) {
                 //success data
-                console.log(data);
+                // console.log(data);
                 $('#edit-province').val(data.name);
                 $('#edit-province-id').val(data.id);
             })
@@ -1226,13 +1322,189 @@
                                 location.reload()
                             }
                         })
-                    } else {
+                    } /*else {
                         swal("Cool!", "Your province is safe!", {
                             icon: "success",
                         });
-                    }
+                    }*/
                 });
         })
 
+        // Zone
+        $('.open_edit_zone_modal').on('click', function () {
+
+            var zone_id = $(this).val();
+
+            $.get(url + '/zone/' + zone_id + '/edit', function (data) {
+                //success data
+                console.log(data);
+                $('#edit-zone').val(data.name);
+                $('#edit-zone-id').val(data.id);
+            })
+        });
+
+        $('.delete_zone').on('click', function () {
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this.",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Cancel",
+                        value: null,
+                        visible: true,
+                        className: "",
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "OK",
+                        value: true,
+                        visible: true,
+                        className: "",
+                        closeModal: false
+                    }
+                },
+                dangerMode: true,
+
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+
+                        var zone_id = $(this).val();
+
+                        $.get(url + '/zone/delete/' + zone_id, function (response) {
+                            //success data
+                            if (response.answer === 'deleted') {
+                                swal("Done!", "Zone has been deleted successfully!", {
+                                    icon: "success",
+                                });
+                                location.reload()
+                            }
+                        })
+                    } /*else {
+                        swal("Cool!", "Your zone is safe!", {
+                            icon: "success",
+                        });
+                    }*/
+                });
+        })
+
+        // Category
+        $('.open_edit_category_modal').on('click', function () {
+
+            var category_id = $(this).val();
+
+            $.get(url + '/categories/' + category_id + '/edit', function (data) {
+                //success data
+                console.log(data);
+                $('#edit-category').val(data.name);
+                $('#edit-category-id').val(data.id);
+            })
+        });
+
+        $('.delete_category').on('click', function () {
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this.",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Cancel",
+                        value: null,
+                        visible: true,
+                        className: "",
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "OK",
+                        value: true,
+                        visible: true,
+                        className: "",
+                        closeModal: false
+                    }
+                },
+                dangerMode: true,
+
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+
+                        var category_id = $(this).val();
+
+                        $.get(url + '/category/delete/' + category_id, function (response) {
+                            //success data
+                            if (response.answer === 'deleted') {
+                                swal("Done!", "Category has been deleted successfully!", {
+                                    icon: "success",
+                                });
+                                location.reload()
+                            }
+                        })
+                    } /*else {
+                        swal("Cool!", "Your zone is safe!", {
+                            icon: "success",
+                        });
+                    }*/
+                });
+        })
+
+        // Category
+        $('.open_edit_country_modal').on('click', function () {
+
+            var country_id = $(this).val();
+
+            $.get(url + '/country/' + country_id + '/edit', function (data) {
+                //success data
+                console.log(data);
+                $('#edit-country').val(data.name);
+                $('#edit-country-id').val(data.id);
+            })
+        });
+
+        $('.delete_country').on('click', function () {
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this.",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Cancel",
+                        value: null,
+                        visible: true,
+                        className: "",
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "OK",
+                        value: true,
+                        visible: true,
+                        className: "",
+                        closeModal: false
+                    }
+                },
+                dangerMode: true,
+
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+
+                        var country_id = $(this).val();
+
+                        $.get(url + '/country/delete/' + country_id, function (response) {
+                            //success data
+                            if (response.answer === 'deleted') {
+                                swal("Done!", "Country has been deleted successfully!", {
+                                    icon: "success",
+                                });
+                                location.reload()
+                            }
+                        })
+                    } /*else {
+                        swal("Cool!", "Your zone is safe!", {
+                            icon: "success",
+                        });
+                    }*/
+                });
+        })
     </script>
 @endsection

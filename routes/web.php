@@ -56,7 +56,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         'title' => "TitleController",
         'province' => "ProvinceController",
         'zone' => "ZoneController",
-        'categories' => "CategoryController"
+        'categories' => "CategoryController",
+        'country' => "CountryController"
     ]);
 
     Route::get('expense/delete/{expense}', 'ExpenseController@destroy')->name('expenses.delete');
@@ -69,6 +70,18 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     //Update Province
     Route::post('province/update', 'ProvinceController@update')->name('update.province');
     Route::get('province/delete/{id}', 'ProvinceController@destroy');
+
+    //Update Zone
+    Route::post('zone/update', 'ZoneController@update')->name('update.zone');
+    Route::get('zone/delete/{id}', 'ZoneController@destroy');
+
+    //Update Category
+    Route::post('category/update', 'CategoryController@update')->name('update.category');
+    Route::get('category/delete/{id}', 'CategoryController@destroy');
+
+    //Update Country
+    Route::post('country/update', 'CountryController@update')->name('update.country');
+    Route::get('country/delete/{id}', 'CountryController@destroy');
 
     Route::get('admin/settings','AdminController@settingsView')->name('admin.settings');
 
