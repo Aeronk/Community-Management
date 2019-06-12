@@ -59,7 +59,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         'categories' => "CategoryController",
         'country' => "CountryController",
         'marital_status' => "MaritalStatusController",
-        'account' => "AccountController"
+        'account' => "AccountController",
+        'payment_method' => "PaymentMethodController"
     ]);
 
     Route::get('expense/delete/{expense}', 'ExpenseController@destroy')->name('expenses.delete');
@@ -92,6 +93,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     //Update Account
     Route::post('account/update', 'AccountController@update')->name('update.account');
     Route::get('account/delete/{id}', 'AccountController@destroy');
+
+    //Update Payment Method
+    Route::post('payment_method/update', 'PaymentMethodController@update')->name('update.payment_method');
+    Route::get('payment_method/delete/{id}', 'PaymentMethodController@destroy');
 
     Route::get('admin/settings','AdminController@settingsView')->name('admin.settings');
 
