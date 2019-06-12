@@ -1108,10 +1108,25 @@
         $('.delete_title').on('click', function(){
             swal({
                 title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover this imaginary file!",
-                icon: "warning",
-                buttons: true,
+                text: "Once deleted, you will not be able to recover this.",
+            icon: "warning",
+                buttons: { cancel: {
+                        text: "Cancel",
+                        value: null,
+                        visible: true,
+                        className: "",
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "OK",
+                        value: true,
+                        visible: true,
+                        className: "",
+                        closeModal: false
+                    }
+                },
                 dangerMode: true,
+
             })
                 .then((willDelete) => {
                     if (willDelete) {
