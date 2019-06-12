@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\Category;
 use App\Country;
 use App\MaritalStatus;
@@ -20,6 +21,7 @@ class AdminController extends Controller
         $categories = Category::all();
         $countries = Country::all();
         $marital_statuses = MaritalStatus::all();
+        $accounts = Account::all();
 
         return view('admin.settings',[
             'titles' => $titles,
@@ -27,7 +29,8 @@ class AdminController extends Controller
             'zones' => $zones,
             'categories' => $categories,
             'countries' => $countries,
-            'marital_statuses' => $marital_statuses
+            'marital_statuses' => $marital_statuses,
+            'accounts' => $accounts
         ]);
     }
 }

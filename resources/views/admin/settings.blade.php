@@ -793,34 +793,24 @@
                                                 <th>Operations</th>
                                             </tr>
                                             </thead>
-                                            {{--<tbody>
-                                            @foreach($positions as $pos)
+                                            <tbody>
+                                            @foreach($accounts as $acc)
                                                 <tr>
-                                                    <td>{{$pos->title}}</td>
-                                                    @if($pos->trackable==1)
-                                                        <td>
-                                                            <button class="btn btn-info">Trackable</button>
-                                                        </td>
-                                                    @endif
-                                                    @if($pos->trackable==2 OR $pos->trackable==NULL)
-                                                        <td>
-                                                            <button class="btn btn-danger">Not Trackable</button>
-                                                        </td>
-                                                    @endif
+                                                    <td>{{$acc->name}}</td>
                                                     <td>
-                                                        <a href="{{ route('position-edit', $pos->id) }}"
-                                                           class="btn btn-danger btn-xs" data-toggle="modal"
-                                                           data-target="#"
-                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
 
-                                                        <a href="{{ route('positions.destroy', $pos->id) }}"
-                                                           data-method="DELETE"
-                                                           data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
-                                                                    class="icon s7-trash"></i></a>
+                                                        <button class="btn btn-warning btn-xs open_edit_account_modal"
+                                                                value="{{$acc->id}}" data-toggle="modal"
+                                                                data-target="#myEditAccount"
+                                                        ><i class="icon s7-pen"></i></button>
+
+                                                        <button class="btn btn-danger btn-xs delete_account"
+                                                                value="{{$acc->id}}"><i class="icon s7-trash"></i>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                            </tbody>--}}
+                                            </tbody>
 
                                         </table>
                                         <!-- The Modal -->
@@ -839,7 +829,7 @@
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
                                                         <form method="post"
-                                                              action="#{{--{{ route('positions.store') }}--}}">
+                                                              action="{{ route('account.store') }}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="account">Account</label>
@@ -850,6 +840,49 @@
                                                             <div class="form-group">
                                                                 <input type="submit" class="btn btn-info btn-block"
                                                                        value="Save">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade" id="myEditAccount">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Edit Account</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post"
+                                                              action="{{ route('update.account') }}">
+                                                            {!! csrf_field() !!}
+                                                            <input id="edit-account-id" type="hidden"
+                                                                   class="form-control"
+                                                                   name="id" value="">
+                                                            <div class="form-group">
+                                                                <label for="account">Account</label>
+                                                                <input id="edit-account" type="text"
+                                                                       class="form-control"
+                                                                       name="account" value="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Update">
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1598,5 +1631,65 @@
                     }*/
                 });
         })
+
+        // Marital Status
+        $('.open_edit_account_modal').on('click', function () {
+
+            var account_id = $(this).val();
+
+            $.get(url + '/account/' + account_id + '/edit', function (data) {
+                //success data
+                //console.log(data);
+                $('#edit-account').val(data.name);
+                $('#edit-account-id').val(data.id);
+            })
+        });
+
+        $('.delete_account').on('click', function () {
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this.",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Cancel",
+                        value: null,
+                        visible: true,
+                        className: "",
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "OK",
+                        value: true,
+                        visible: true,
+                        className: "",
+                        closeModal: false
+                    }
+                },
+                dangerMode: true,
+
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+
+                        var account_id = $(this).val();
+
+                        $.get(url + '/account/delete/' + account_id, function (response) {
+                            //success data
+                            if (response.answer === 'deleted') {
+                                swal("Done!", "Account has been deleted successfully!", {
+                                    icon: "success",
+                                });
+                                location.reload()
+                            }
+                        })
+                    } /*else {
+                        swal("Cool!", "Your zone is safe!", {
+                            icon: "success",
+                        });
+                    }*/
+                });
+        })
+
     </script>
 @endsection
