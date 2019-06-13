@@ -42,7 +42,7 @@ class AdminController extends Controller
             'payment_method' => $payment_methods,
             'expenditure_types' => $expenditure_types,
             'contribution_types' => $contribution_types,
-            'activity_types' => $activity_types
+            'activity_types' => $activity_types,
         ]);
     }
 }

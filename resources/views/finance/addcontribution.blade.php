@@ -21,7 +21,13 @@
 
 
      <form class="form-horizontal"  method="post" action="{{ route('contribution.store') }}">
+         <div class="panel panel-danger" style="padding:0px">
+             <div class="panel-heading" style="padding:8px">
+                 <h4 class="panel-title" style="text-align:left">
        <h2 class="title">Contributions</h2>
+                 </h4>
+             </div>
+         </div>
 
        {!! csrf_field() !!}
        <div class="form-group row">
@@ -51,14 +57,14 @@
          </select>
        </div>
      </div>
-     <div class="form-group row">
+    {{-- <div class="form-group row">
       <label for="ministry" class="col-md-2 col-form-label col-form-control-md">Province</label>
       <div class="col-sm-3 col-sm-offset-1">
         <select class="form-control" name="province">
-          <option>please select</option>
-          @foreach($provinces as $province)
-          <option>{{$province->name}}</option>
-          @endforeach
+          --}}{{--<option>please select</option>--}}{{--
+          --}}{{--@foreach($provinces as $province)--}}{{--
+          <option id="minister-province" value="" selected></option>
+          --}}{{--@endforeach--}}{{--
         </select>
       </div>
     </div>
@@ -66,17 +72,16 @@
       <label for="district" class="col-md-2 col-form-label col-form-control-md">Zone</label>
       <div class="col-sm-3 col-sm-offset-1">
        
-        <option></option>
        <select  class="form-control form-control-md" name="zone" id="zone">
-          <option>please select</option>
-          @foreach($zones as $zone)
-          <option>{{$zone->name}}</option>
-          @endforeach
+        --}}{{--  <option>please select</option>
+          @foreach($zones as $zone)--}}{{--
+          <option id="minister-zone" value="" selected></option>
+          --}}{{--@endforeach--}}{{--
         </select>
      
       
     </div>
-  </div>
+  </div>--}}
   <div class="form-group">
     <label for="transactionID" class="col-sm-2 control-label" style="text-align:left">Reciept Number</label>
     <div class="col-sm-3 col-sm-offset-1">

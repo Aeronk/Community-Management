@@ -17,7 +17,7 @@
 
     <div class="am-content">
         <div class="main-content">
-            <div class="row">
+            {{--<div class="row">
 
                 <table class="table" width="60%" style="mar: 0px">
                     <thead>
@@ -43,14 +43,16 @@
                 </table>
 
             </div>
+--}}
 
-
+            <h2>Individual Contributions Table</h2>
             <table id="tableC" class="table table-striped table-hover table-fw-widget" style="padding:3px">
                 <thead>
 
                 <tr class="default">
 
                     <th><strong>Denomination</strong></th>
+                    <th><strong>Contribution Type</strong></th>
                     <th><strong>Amount Paid</strong></th>
                     <th><strong>Balance</strong></th>
                     <th><strong>Date Received</strong></th>
@@ -66,6 +68,7 @@
                 @foreach($indcontributions as $contribution)
                     <tr>
                         <td>{{$contribution->denomination->name??''}}</td>
+                        <td>{{$contribution->contributiontype->name??''}}</td>
                         <td>{{$contribution->amount}}</td>
                         <td>{{$contribution->denomination->sub_balance??''}}</td>
                         <td>{{$contribution->date_recieved}}</td>

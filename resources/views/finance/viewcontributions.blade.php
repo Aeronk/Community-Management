@@ -17,7 +17,7 @@
 
     <div class="am-content">
         <div class="main-content">
-            <div class="row">
+           {{-- <div class="row">
                 <div class="col-md-3">
                     Contribution Type
                     <select id="type">
@@ -38,7 +38,7 @@
 
             </div>
 
-
+--}}
             <h2>Contributions Table</h2>
             <table class="table table-striped" id="tableCo">
                 <thead>
