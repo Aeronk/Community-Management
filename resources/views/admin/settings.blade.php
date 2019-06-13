@@ -1282,6 +1282,7 @@
                                             <thead>
                                             <tr>
                                                 <th>Name</th>
+                                                <th>Description</th>
                                                 <th>Operations</th>
                                             </tr>
                                             </thead>
@@ -1289,6 +1290,7 @@
                                             @foreach($activity_types as $activity)
                                                 <tr>
                                                     <td>{{$activity->name}}</td>
+                                                    <td>{{$activity->description}}</td>
                                                     <td>
 
                                                         <button class="btn btn-warning btn-xs open_edit_at_modal"
@@ -1328,6 +1330,12 @@
                                                                 <input type="text" class="form-control"
                                                                        placeholder="Activity Type"
                                                                        name="activity_type">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="activity_type_description">Description</label>
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="Description"
+                                                                       name="description">
                                                             </div>
                                                             <div class="form-group">
                                                                 <input type="submit" class="btn btn-info btn-block"
@@ -1370,6 +1378,12 @@
                                                                 <input id="edit-at" type="text"
                                                                        class="form-control"
                                                                        name="activity_type" value="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="atd">Description</label>
+                                                                <input id="edit-atd" type="text"
+                                                                       class="form-control"
+                                                                       name="description" value="">
                                                             </div>
                                                             <div class="form-group">
                                                                 <input type="submit" class="btn btn-info btn-block"
@@ -2004,6 +2018,7 @@
                 //success data
                 //console.log(data);
                 $('#edit-at').val(data.name);
+                $('#edit-atd').val(data.description);
                 $('#edit-at-id').val(data.id);
             })
         });

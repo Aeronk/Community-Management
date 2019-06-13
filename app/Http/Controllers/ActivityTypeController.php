@@ -37,11 +37,13 @@ class ActivityTypeController extends Controller
     public function store(Request $request)
     {
         Validator::make($request->all(),[
-            'activity_type' => 'required'
+            'activity_type' => 'required',
+            'description' => 'required'
         ])->validate();
 
         ActivityType::create([
-            'name' => $request->input('activity_type')
+            'name' => $request->input('activity_type'),
+            'description' => $request->input('description')
         ]);
 
         return redirect()->back()->with('message', 'Activity type Added successfully');
@@ -78,13 +80,15 @@ class ActivityTypeController extends Controller
     {
         Validator::make($request->all(),[
             'id' => 'required',
-            'activity_type' => 'required'
+            'activity_type' => 'required',
+            'description' => 'required'
         ])->validate();
 
         $activity_type = ActivityType::findOrFail($request->input('id'));
 
         $update = $activity_type->update([
-            'name' => $request->input('activity_type')
+            'name' => $request->input('activity_type'),
+            'description' => $request->input('description')
         ]);
 
         if ($update){
