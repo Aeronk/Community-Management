@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\ActivityType;
+use App\ExpenditureType;
+use App\PaymentMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class ActivityTypeController extends Controller
+class ExpenditureTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,70 +38,68 @@ class ActivityTypeController extends Controller
     public function store(Request $request)
     {
         Validator::make($request->all(),[
-            'activity_type' => 'required'
+            'expenditure_type' => 'required'
         ])->validate();
 
-        ActivityType::create([
-            'name' => $request->input('activity_type')
+        ExpenditureType::create([
+            'name' => $request->input('expenditure_type')
         ]);
 
-        return redirect()->back()->with('message', 'Activity type Added successfully');
+        return redirect()->back()->with('message', 'Expenditure type Added successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\ActivityType  $activityType
+     * @param  \App\ExpenditureType  $expenditureType
      * @return \Illuminate\Http\Response
      */
-    public function show(ActivityType $activityType)
+    public function show(ExpenditureType $expenditureType)
     {
         //
     }
 
     /**
-     * @param ActivityType $activityType
-     * @return ActivityType
+     * @param ExpenditureType $expenditureType
+     * @return ExpenditureType
      */
-    public function edit(ActivityType $activityType)
+    public function edit(ExpenditureType $expenditureType)
     {
-        return $activityType;
+        return $expenditureType;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ActivityType  $activityType
+     * @param  \App\ExpenditureType  $expenditureType
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
         Validator::make($request->all(),[
             'id' => 'required',
-            'activity_type' => 'required'
+            'expenditure_type' => 'required'
         ])->validate();
 
-        $activity_type = ActivityType::findOrFail($request->input('id'));
+        $expenditureType = ExpenditureType::findOrFail($request->input('id'));
 
-        $update = $activity_type->update([
-            'name' => $request->input('activity_type')
+        $update = $expenditureType->update([
+            'name' => $request->input('expenditure_type')
         ]);
 
         if ($update){
-            return redirect()->back()->with('message', 'Activity type was updated successfully', 'success');
-        }else return redirect()->back()->with('message', 'Error when updating activity type.', 'error');
+            return redirect()->back()->with('message', 'Expenditure type was updated successfully', 'success');
+        }else return redirect()->back()->with('message', 'Error when updating account.', 'error');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\ActivityType  $activityType
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
-        $delete = ActivityType::findOrFail($id)->delete();
+        $delete = ExpenditureType::findOrFail($id)->delete();
 
         if($delete){
             return response()->json(['answer' => 'deleted']);

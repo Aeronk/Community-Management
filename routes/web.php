@@ -60,7 +60,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         'country' => "CountryController",
         'marital_status' => "MaritalStatusController",
         'account' => "AccountController",
-        'payment_method' => "PaymentMethodController"
+        'payment_method' => "PaymentMethodController",
+        'expenditure_type' => "ExpenditureTypeController",
+        'contribution_type' => "ContributionTypeController",
+        'activity_type' => "ActivityTypeController"
     ]);
 
     Route::get('expense/delete/{expense}', 'ExpenseController@destroy')->name('expenses.delete');
@@ -97,6 +100,18 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     //Update Payment Method
     Route::post('payment_method/update', 'PaymentMethodController@update')->name('update.payment_method');
     Route::get('payment_method/delete/{id}', 'PaymentMethodController@destroy');
+
+    //Update Expenditure Type
+    Route::post('expenditure_type/update', 'ExpenditureTypeController@update')->name('update.expenditure_type');
+    Route::get('expenditure_type/delete/{id}', 'ExpenditureTypeController@destroy');
+
+    //Update Contribution Type
+    Route::post('contribution_type/update', 'ContributionTypeController@update')->name('update.contribution_type');
+    Route::get('contribution_type/delete/{id}', 'ContributionTypeController@destroy');
+
+    //Update Activity Type
+    Route::post('activity_type/update', 'ActivityTypeController@update')->name('update.activity_type');
+    Route::get('activity_type/delete/{id}', 'ActivityTypeController@destroy');
 
     Route::get('admin/settings','AdminController@settingsView')->name('admin.settings');
 

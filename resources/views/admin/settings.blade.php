@@ -31,7 +31,7 @@
                                 <li><a href="#activity_type" data-toggle="tab">Activity<br>Type</a></li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tab-pane fade active" id="title"><!-- start Tab panes fade-->
+                                <div class="tab-pane fade" id="title"><!-- start Tab panes fade-->
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
@@ -1041,35 +1041,24 @@
                                                 <th>Operations</th>
                                             </tr>
                                             </thead>
-                                            {{--<tbody>
-                                            @foreach($positions as $pos)
+                                            <tbody>
+                                            @foreach($expenditure_types as $expenditure)
                                                 <tr>
-                                                    <td>{{$pos->title}}</td>
-                                                    @if($pos->trackable==1)
-                                                        <td>
-                                                            <button class="btn btn-info">Trackable</button>
-                                                        </td>
-                                                    @endif
-                                                    @if($pos->trackable==2 OR $pos->trackable==NULL)
-                                                        <td>
-                                                            <button class="btn btn-danger">Not Trackable</button>
-                                                        </td>
-                                                    @endif
+                                                    <td>{{$expenditure->name}}</td>
                                                     <td>
-                                                        <a href="{{ route('position-edit', $pos->id) }}"
-                                                           class="btn btn-danger btn-xs" data-toggle="modal"
-                                                           data-target="#"
-                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
 
-                                                        <a href="{{ route('positions.destroy', $pos->id) }}"
-                                                           data-method="DELETE"
-                                                           data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
-                                                                    class="icon s7-trash"></i></a>
+                                                        <button class="btn btn-warning btn-xs open_edit_et_modal"
+                                                                value="{{$expenditure->id}}" data-toggle="modal"
+                                                                data-target="#myEditExpenditureType"
+                                                        ><i class="icon s7-pen"></i></button>
+
+                                                        <button class="btn btn-danger btn-xs delete_et"
+                                                                value="{{$expenditure->id}}"><i class="icon s7-trash"></i>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                            </tbody>--}}
-
+                                            </tbody>
                                         </table>
                                         <!-- The Modal -->
                                         <div class="modal fade" id="myExpenditureType">
@@ -1087,7 +1076,7 @@
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
                                                         <form method="post"
-                                                              action="#{{--{{ route('positions.store') }}--}}">
+                                                              action="{{ route('expenditure_type.store') }}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="expenditure_type">Expenditure Type</label>
@@ -1098,6 +1087,48 @@
                                                             <div class="form-group">
                                                                 <input type="submit" class="btn btn-info btn-block"
                                                                        value="Save">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade" id="myEditExpenditureType">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Edit Expenditure Type</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
+                                                    </div>
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post"
+                                                              action="{{ route('update.expenditure_type') }}">
+                                                            {!! csrf_field() !!}
+                                                            <input id="edit-et-id" type="hidden"
+                                                                   class="form-control"
+                                                                   name="id" value="">
+                                                            <div class="form-group">
+                                                                <label for="et">Expenditure Type</label>
+                                                                <input id="edit-et" type="text"
+                                                                       class="form-control"
+                                                                       name="expenditure_type" value="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Update">
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1132,34 +1163,24 @@
                                                 <th>Operations</th>
                                             </tr>
                                             </thead>
-                                            {{--<tbody>
-                                            @foreach($positions as $pos)
+                                            <tbody>
+                                            @foreach($contribution_types as $contribution)
                                                 <tr>
-                                                    <td>{{$pos->title}}</td>
-                                                    @if($pos->trackable==1)
-                                                        <td>
-                                                            <button class="btn btn-info">Trackable</button>
-                                                        </td>
-                                                    @endif
-                                                    @if($pos->trackable==2 OR $pos->trackable==NULL)
-                                                        <td>
-                                                            <button class="btn btn-danger">Not Trackable</button>
-                                                        </td>
-                                                    @endif
+                                                    <td>{{$contribution->name}}</td>
                                                     <td>
-                                                        <a href="{{ route('position-edit', $pos->id) }}"
-                                                           class="btn btn-danger btn-xs" data-toggle="modal"
-                                                           data-target="#"
-                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
 
-                                                        <a href="{{ route('positions.destroy', $pos->id) }}"
-                                                           data-method="DELETE"
-                                                           data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
-                                                                    class="icon s7-trash"></i></a>
+                                                        <button class="btn btn-warning btn-xs open_edit_ct_modal"
+                                                                value="{{$contribution->id}}" data-toggle="modal"
+                                                                data-target="#myEditContributionType"
+                                                        ><i class="icon s7-pen"></i></button>
+
+                                                        <button class="btn btn-danger btn-xs delete_ct"
+                                                                value="{{$contribution->id}}"><i class="icon s7-trash"></i>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                            </tbody>--}}
+                                            </tbody>
 
                                         </table>
                                         <!-- The Modal -->
@@ -1178,7 +1199,7 @@
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
                                                         <form method="post"
-                                                              action="#{{--{{ route('positions.store') }}--}}">
+                                                              action="{{ route('contribution_type.store') }}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="contribution_type">Contribution Type</label>
@@ -1203,7 +1224,48 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="modal fade" id="myEditContributionType">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
 
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Edit Contribution Type</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
+                                                    </div>
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post"
+                                                              action="{{ route('update.contribution_type') }}">
+                                                            {!! csrf_field() !!}
+                                                            <input id="edit-ct-id" type="hidden"
+                                                                   class="form-control"
+                                                                   name="id" value="">
+                                                            <div class="form-group">
+                                                                <label for="ct">Contribution Type</label>
+                                                                <input id="edit-ct" type="text"
+                                                                       class="form-control"
+                                                                       name="contribution_type" value="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Update">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                 </div><!-- end Tab panes fade-->
@@ -1223,34 +1285,24 @@
                                                 <th>Operations</th>
                                             </tr>
                                             </thead>
-                                            {{--<tbody>
-                                            @foreach($positions as $pos)
+                                            <tbody>
+                                            @foreach($activity_types as $activity)
                                                 <tr>
-                                                    <td>{{$pos->title}}</td>
-                                                    @if($pos->trackable==1)
-                                                        <td>
-                                                            <button class="btn btn-info">Trackable</button>
-                                                        </td>
-                                                    @endif
-                                                    @if($pos->trackable==2 OR $pos->trackable==NULL)
-                                                        <td>
-                                                            <button class="btn btn-danger">Not Trackable</button>
-                                                        </td>
-                                                    @endif
+                                                    <td>{{$activity->name}}</td>
                                                     <td>
-                                                        <a href="{{ route('position-edit', $pos->id) }}"
-                                                           class="btn btn-danger btn-xs" data-toggle="modal"
-                                                           data-target="#"
-                                                           data-id="{{$pos->id}}"><i class="icon s7-pen"></i></a>
 
-                                                        <a href="{{ route('positions.destroy', $pos->id) }}"
-                                                           data-method="DELETE"
-                                                           data-id="{{ $pos->id }}" class="btn btn-danger btn-xs"><i
-                                                                    class="icon s7-trash"></i></a>
+                                                        <button class="btn btn-warning btn-xs open_edit_at_modal"
+                                                                value="{{$activity->id}}" data-toggle="modal"
+                                                                data-target="#myEditActivityType"
+                                                        ><i class="icon s7-pen"></i></button>
+
+                                                        <button class="btn btn-danger btn-xs delete_at"
+                                                                value="{{$activity->id}}"><i class="icon s7-trash"></i>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                            </tbody>--}}
+                                            </tbody>
 
                                         </table>
                                         <!-- The Modal -->
@@ -1269,7 +1321,7 @@
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
                                                         <form method="post"
-                                                              action="#{{--{{ route('positions.store') }}--}}">
+                                                              action="{{ route('activity_type.store') }}">
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label for="activity_type">Activity Type</label>
@@ -1280,6 +1332,48 @@
                                                             <div class="form-group">
                                                                 <input type="submit" class="btn btn-info btn-block"
                                                                        value="Save">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade" id="myEditActivityType">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Edit Activity Type</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
+                                                    </div>
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form method="post"
+                                                              action="{{ route('update.activity_type') }}">
+                                                            {!! csrf_field() !!}
+                                                            <input id="edit-at-id" type="hidden"
+                                                                   class="form-control"
+                                                                   name="id" value="">
+                                                            <div class="form-group">
+                                                                <label for="at">Activity Type</label>
+                                                                <input id="edit-at" type="text"
+                                                                       class="form-control"
+                                                                       name="activity_type" value="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="submit" class="btn btn-info btn-block"
+                                                                       value="Update">
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1769,7 +1863,184 @@
                         $.get(url + '/payment_method/delete/' + pm_id, function (response) {
                             //success data
                             if (response.answer === 'deleted') {
-                                swal("Done!", "Paymen method has been deleted successfully!", {
+                                swal("Done!", "Payment method has been deleted successfully!", {
+                                    icon: "success",
+                                });
+                                location.reload()
+                            }
+                        })
+                    } /*else {
+                        swal("Cool!", "Your zone is safe!", {
+                            icon: "success",
+                        });
+                    }*/
+                });
+        })
+
+        // Expenditure Type
+        $('.open_edit_et_modal').on('click', function () {
+
+            var et_id = $(this).val();
+
+            $.get(url + '/expenditure_type/' + et_id + '/edit', function (data) {
+                //success data
+                //console.log(data);
+                $('#edit-et').val(data.name);
+                $('#edit-et-id').val(data.id);
+            })
+        });
+
+        $('.delete_et').on('click', function () {
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this.",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Cancel",
+                        value: null,
+                        visible: true,
+                        className: "",
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "OK",
+                        value: true,
+                        visible: true,
+                        className: "",
+                        closeModal: false
+                    }
+                },
+                dangerMode: true,
+
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+
+                        var et_id = $(this).val();
+
+                        $.get(url + '/expenditure_type/delete/' + et_id, function (response) {
+                            //success data
+                            if (response.answer === 'deleted') {
+                                swal("Done!", "Expenditure type has been deleted successfully!", {
+                                    icon: "success",
+                                });
+                                location.reload()
+                            }
+                        })
+                    } /*else {
+                        swal("Cool!", "Your zone is safe!", {
+                            icon: "success",
+                        });
+                    }*/
+                });
+        })
+
+        // Contribution Type
+        $('.open_edit_ct_modal').on('click', function () {
+
+            var ct_id = $(this).val();
+
+            $.get(url + '/contribution_type/' + ct_id + '/edit', function (data) {
+                //success data
+                //console.log(data);
+                $('#edit-ct').val(data.name);
+                $('#edit-ct-id').val(data.id);
+            })
+        });
+
+        $('.delete_ct').on('click', function () {
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this.",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Cancel",
+                        value: null,
+                        visible: true,
+                        className: "",
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "OK",
+                        value: true,
+                        visible: true,
+                        className: "",
+                        closeModal: false
+                    }
+                },
+                dangerMode: true,
+
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+
+                        var ct_id = $(this).val();
+
+                        $.get(url + '/contribution_type/delete/' + ct_id, function (response) {
+                            //success data
+                            if (response.answer === 'deleted') {
+                                swal("Done!", "Contribution type has been deleted successfully!", {
+                                    icon: "success",
+                                });
+                                location.reload()
+                            }
+                        })
+                    } /*else {
+                        swal("Cool!", "Your zone is safe!", {
+                            icon: "success",
+                        });
+                    }*/
+                });
+        })
+
+        // Contribution Type
+        $('.open_edit_at_modal').on('click', function () {
+
+            var at_id = $(this).val();
+
+            $.get(url + '/activity_type/' + at_id + '/edit', function (data) {
+                //success data
+                //console.log(data);
+                $('#edit-at').val(data.name);
+                $('#edit-at-id').val(data.id);
+            })
+        });
+
+        $('.delete_at').on('click', function () {
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this.",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Cancel",
+                        value: null,
+                        visible: true,
+                        className: "",
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "OK",
+                        value: true,
+                        visible: true,
+                        className: "",
+                        closeModal: false
+                    }
+                },
+                dangerMode: true,
+
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+
+                        var at_id = $(this).val();
+
+                        $.get(url + '/activity_type/delete/' + at_id, function (response) {
+                            //success data
+                            if (response.answer === 'deleted') {
+                                swal("Done!", "Activity type has been deleted successfully!", {
                                     icon: "success",
                                 });
                                 location.reload()

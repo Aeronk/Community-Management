@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ContributionType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ContributionTypeController extends Controller
 {
@@ -35,7 +36,15 @@ class ContributionTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Validator::make($request->all(),[
+            'contribution_type' => 'required'
+        ])->validate();
+
+        ContributionType::create([
+            'name' => $request->input('contribution_type')
+        ]);
+
+        return redirect()->back()->with('message', 'Contribution type Added successfully');
     }
 
     /**
@@ -50,14 +59,12 @@ class ContributionTypeController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\ContributionType  $contributionType
-     * @return \Illuminate\Http\Response
+     * @param ContributionType $contributionType
+     * @return ContributionType
      */
     public function edit(ContributionType $contributionType)
     {
-        //
+        return $contributionType;
     }
 
     /**
@@ -67,19 +74,36 @@ class ContributionTypeController extends Controller
      * @param  \App\ContributionType  $contributionType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ContributionType $contributionType)
+    public function update(Request $request)
     {
-        //
+        Validator::make($request->all(),[
+            'id' => 'required',
+            'contribution_type' => 'required'
+        ])->validate();
+
+        $contribution_type = ContributionType::findOrFail($request->input('id'));
+
+        $update = $contribution_type->update([
+            'name' => $request->input('contribution_type')
+        ]);
+
+        if ($update){
+            return redirect()->back()->with('message', 'Contribution type was updated successfully', 'success');
+        }else return redirect()->back()->with('message', 'Error when updating contribution type.', 'error');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource
      *
-     * @param  \App\ContributionType  $contributionType
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(ContributionType $contributionType)
+    public function destroy($id)
     {
-        //
+        $delete = ContributionType::findOrFail($id)->delete();
+
+        if($delete){
+            return response()->json(['answer' => 'deleted']);
+        }
     }
 }
