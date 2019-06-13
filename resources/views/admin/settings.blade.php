@@ -31,7 +31,7 @@
                                 <li><a href="#activity_type" data-toggle="tab">Activity<br>Type</a></li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tab-pane fade" id="title"><!-- start Tab panes fade-->
+                                <div class="tab-pane active cont" id="title"><!-- start Tab panes fade-->
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
@@ -151,7 +151,7 @@
                                     </div>
 
                                 </div><!-- end Tab panes fade-->
-                                <div class="tab-pane fade" id="province"><!-- start Tab panes fade-->
+                                <div class="tab-pane cont" id="province"><!-- start Tab panes fade-->
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
@@ -271,7 +271,7 @@
                                     </div>
 
                                 </div><!-- end Tab panes fade-->
-                                <div class="tab-pane fade" id="zone"><!-- start Tab panes fade-->
+                                <div class="tab-pane cont" id="zone"><!-- start Tab panes fade-->
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
@@ -394,7 +394,7 @@
                                     </div>
 
                                 </div><!-- end Tab panes fade-->
-                                <div class="tab-pane fade" id="category"><!-- start Tab panes fade-->
+                                <div class="tab-pane cont" id="category"><!-- start Tab panes fade-->
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
@@ -529,7 +529,7 @@
                                     </div>
 
                                 </div><!-- end Tab panes fade-->
-                                <div class="tab-pane fade" id="country"><!-- start Tab panes fade-->
+                                <div class="tab-pane cont" id="country"><!-- start Tab panes fade-->
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
@@ -653,7 +653,7 @@
                                     </div>
 
                                 </div><!-- end Tab panes fade-->
-                                <div class="tab-pane fade" id="marital_status"><!-- start Tab panes fade-->
+                                <div class="tab-pane cont" id="marital_status"><!-- start Tab panes fade-->
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
@@ -777,7 +777,7 @@
                                     </div>
 
                                 </div><!-- end Tab panes fade-->
-                                <div class="tab-pane fade" id="account"><!-- start Tab panes fade-->
+                                <div class="tab-pane cont" id="account"><!-- start Tab panes fade-->
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
@@ -901,7 +901,7 @@
                                     </div>
 
                                 </div><!-- end Tab panes fade-->
-                                <div class="tab-pane fade" id="payment_method"><!-- start Tab panes fade-->
+                                <div class="tab-pane cont" id="payment_method"><!-- start Tab panes fade-->
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
@@ -1025,7 +1025,7 @@
                                     </div>
 
                                 </div><!-- end Tab panes fade-->
-                                <div class="tab-pane fade" id="expenditure_type"><!-- start Tab panes fade-->
+                                <div class="tab-pane cont" id="expenditure_type"><!-- start Tab panes fade-->
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
@@ -1147,7 +1147,7 @@
                                     </div>
 
                                 </div><!-- end Tab panes fade-->
-                                <div class="tab-pane fade" id="contribution_type"><!-- start Tab panes fade-->
+                                <div class="tab-pane cont" id="contribution_type"><!-- start Tab panes fade-->
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
@@ -1269,7 +1269,7 @@
                                     </div>
 
                                 </div><!-- end Tab panes fade-->
-                                <div class="tab-pane fade" id="activity_type"><!-- start Tab panes fade-->
+                                <div class="tab-pane cont" id="activity_type"><!-- start Tab panes fade-->
                                     <h2 align="center" style="color:#68A4C4"></h2>
 
                                     <div class="row">
