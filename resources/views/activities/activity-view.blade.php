@@ -53,7 +53,7 @@
                                     </a>
                                     <a class="btn btn-danger btn-xs"><i class="icon s7-pen"></i></a>
 
-                                    <a class="btn btn-danger btn-xs"><i class="icon s7-trash"></i></a>
+                                    <a href="{{route('delete.activity',$activity->id)}}" class="btn btn-danger btn-xs"><i class="icon s7-trash"></i></a>
                                 </td>
 
                             </tr>

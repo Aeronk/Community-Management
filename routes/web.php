@@ -67,6 +67,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     ]);
 
     Route::get('expense/delete/{expense}', 'ExpenseController@destroy')->name('expenses.delete');
+    Route::get('activity/delete/{activity}', 'ActivityController@destroy')->name('delete.activity');
 
     //This updates the title
     Route::post('title/update', 'TitleController@update')->name('update.title');

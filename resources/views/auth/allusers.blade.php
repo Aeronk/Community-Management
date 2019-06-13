@@ -39,9 +39,9 @@ All Users
 			<td>{{$user->name}}</td>
 			<td>{{$user->email}}</td>
 			<td>{{$user->denomination->name??""}}</td>
-			<td>{{$user->province->name}}</td>
+			<td>{{$user->province->name??""}}</td>
 			{{-- <td>{{$user->region->name}}</td> --}}
-			<td>{{$user->userlevel->name}}</td>
+			<td>{{$user->userlevel->name??""}}</td>
 			<td>Active</td>
 			<td>
 			<a class="btn btn-danger btn-xs"><i class="icon s7-search icon-sm"></i> 

@@ -47,7 +47,7 @@ class ActivityController extends Controller
         ]);
 
             Activity::unguard();
-             Activity::create([
+           $activity =  Activity::create([
             
             'date' => $request->input('date'),
             'type' => $request->input('type'),
@@ -59,9 +59,10 @@ class ActivityController extends Controller
             'hod' => $request->input('hod'),
             'pastors' => $request->input('pastors'),
             // 'comment' => $request->input('comment'),
-        ]); 
+        ]);
 
-             return redirect()->back()->with('message', 'Activity Added successfully');
+        return redirect()->route('activities.show', [$activity->id])->with('message', 'Activity Added successfully');
+//             return redirect()->back()->with('message', 'Activity Added successfully')/;
     }
 
     /**
@@ -99,13 +100,14 @@ class ActivityController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Activity  $activity
-     * @return \Illuminate\Http\Response
+     * @param Activity $activity
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(Activity $activity)
     {
-        //
+        if ($activity->delete()){
+            return redirect()->back()->with('message','Activity deleted successfully');
+        }
     }
 }

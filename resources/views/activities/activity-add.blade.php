@@ -17,6 +17,12 @@ Ministers
   <div class="main-content">
 
     <div class="container">
+        <div class="row">
+
+            <a href="{{ route('activities.index') }}" class="btn btn-sm btn-primary"><i class="fa fa-hand"></i>Go to listing</a><br>
+
+
+        </div><br>
       <div class="row">
         <form class="form-horizontal group-border-dashed" method="post" action="{{ route('activities.store') }}" >
             <div class="panel-group" id="accordion">
@@ -73,12 +79,18 @@ Ministers
                            
                            </div>
                            <div class="form-group">
-                            <label for="email" class="col-sm-2 control-label" style="text-align:left">Total Members<i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
+                            <label for="email" class="col-sm-2 control-label" style="text-align:left">Attendance <i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
                             <div class="col-sm-3 col-sm-offset-1">
-                              <input type="text" class="form-control" data-parsley-type="number" style="border-radius:10px" id="actTotalMembers" name="total_members" placeholder="Total Members" required="" data-parsley-id="12">
+                              <input type="text" class="form-control" data-parsley-type="number" style="border-radius:10px" id="actTotalMembers" name="total_members" placeholder="Attendance" required="" data-parsley-id="12">
                             </div>
                           </div>
-                <label for="position" class="col-sm-offset-2 control-label" style="text-align:left"><strong>Member Description</strong> </label><hr>
+                            <div class="panel panel-danger">
+                                <div class="panel-heading" style="padding:10px">
+                                    <h4 class="panel-title" style="text-align:left">
+                                        <a href="#basic" id="BasicInfor" style="font-family:serif;font-size:17px" data-toggle="collapse" data-parent="accordion">Attendance  Description</a>
+                                    </h4>
+                                </div>
+                            </div>
                            <div class="form-group">
                             <label for="email" class="col-sm-2 control-label" style="text-align:left">Men</label>
                             <div class="col-sm-3 col-sm-offset-1">
@@ -106,7 +118,14 @@ Ministers
                             </div>
                           </div>
                         
-<hr>                          
+                            <div class="panel panel-danger">
+                                <div class="panel-heading" style="padding:10px">
+                                    <h4 class="panel-title" style="text-align:left">
+                                        <a href="#basic" id="BasicInfor" style="font-family:serif;font-size:17px" data-toggle="collapse" data-parent="accordion">Attendance Register</a>
+                                    </h4>
+                                </div>
+                            </div>
+
                            <div class="form-group">
                             <label for="email" class="col-sm-2 control-label" style="text-align:left">Attended By</label>
                             <div class="col-sm-3 col-sm-offset-1">
