@@ -292,7 +292,7 @@
                                             @foreach($zones as $zone)
                                                 <tr>
                                                     <td>{{$zone->name}}</td>
-                                                    <td>{{$zone->province->name}}</td>
+                                                    <td>{{$zone->province->name??""}}</td>
                                                     <td>
 
                                                         <button class="btn btn-warning btn-xs open_edit_zone_modal"
