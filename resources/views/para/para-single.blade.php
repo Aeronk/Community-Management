@@ -57,6 +57,30 @@
                                 <td>Status</td>
                                 <td>{{$paraChurch->status}}</td>
                             </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>{{$paraChurch->email}}</td>
+                            </tr>
+                            <tr>
+                                <td>Category</td>
+                                <td>{{$paraChurch->category}}</td>
+                            </tr>
+                            <tr>
+                                <td>Year</td>
+                                <td>{{$paraChurch->year??""}}</td>
+                            </tr>
+                            <tr>
+                                <td>Number of branches</td>
+                                <td>{{$paraChurch->number_of_branches??"0"}}</td>
+                            </tr>
+                            <tr>
+                                <td>Number of members</td>
+                                <td>{{$paraChurch->number_of_members??"0"}}</td>
+                            </tr>
+                            <tr>
+                                <td>Sub balance</td>
+                                <td>{{$paraChurch->sub_balance}}</td>
+                            </tr>
                         </tbody>
 
                         </table>

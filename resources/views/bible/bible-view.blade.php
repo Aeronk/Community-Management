@@ -71,12 +71,12 @@ Bible Schools
       <td>{{$bible->address}}</td>
       <td>{{$bible->mobile}}</td>
       <td>{{$bible->enrollment}}</td>
-      <td>{{$bible->status}}</td>
+      <td>{{$bible->status??""}}</td>
       <td>
-       <a title="View More  Bible School Info" href="{{ route('bible.show', $bible->id) }}" class="btn btn-danger btn-xs"><i class="icon s7-search icon-sm"></i> 
+       <a title="View More  Bible School Info" href="{{ route('bible.show', $bible->id) }}" class="btn btn-success btn-xs"><i class="icon s7-search icon-sm"></i>
         </a> 
 
-       <a title="Edit Bible School" href="{{ route('bible.edit', $bible->id) }}" class="btn btn-danger btn-xs"><i class="icon s7-pen"></i>
+       <a title="Edit Bible School" href="{{ route('bible.edit', $bible->id) }}" class="btn btn-warning btn-xs"><i class="icon s7-pen"></i>
        </a>
 
 

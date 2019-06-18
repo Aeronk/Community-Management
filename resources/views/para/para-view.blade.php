@@ -43,10 +43,10 @@ Denominations
       <td>{{$parachurch->contact_person}}</td>
       <td>{{$parachurch->email}}</td>
        <td>
-       <a title="View More  denomination Info" href="{{ route('parachurch.show', $parachurch->id) }}" class="btn btn-danger btn-xs"><i class="icon s7-search icon-sm"></i> 
+       <a title="View More  denomination Info" href="{{ route('parachurch.show', $parachurch->id) }}" class="btn btn-success btn-xs"><i class="icon s7-search icon-sm"></i>
         </a> 
 
-       <a title="Edit denomination" href="{{ route('parachurch.edit', $parachurch->id) }}" class="btn btn-danger btn-xs"><i class="icon s7-pen"></i>
+       <a title="Edit denomination" href="{{ route('parachurch.edit', $parachurch->id) }}" class="btn btn-warning btn-xs"><i class="icon s7-pen"></i>
        </a>
 
         <a title="Deregister denomination" data-method="DELETE" href="{{ route('parachurch.destroy', $parachurch->id) }}" class="btn btn-danger btn-xs"><i class="icon s7-trash"></i>
