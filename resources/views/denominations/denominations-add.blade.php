@@ -255,8 +255,8 @@
                 <div class="form-group">
                   <label for="home_tel" class="col-sm-2 control-label" style="text-align:left"><strong>Are you the HOD or Representative</strong><i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>
                   <div class="col-sm-6 col-sm-offset-1">
-                    <label class="radio-inline"><input type="radio"  value="Yes" name="hod_or_rep">Yes</label>
-                    <label class="radio-inline"><input type="radio"  value="No" name="hod_or_rep">No</label>
+                    <label class="radio-inline"><input type="radio"  value="Yes" name="hod_or_rep">HOD</label>
+                    <label class="radio-inline"><input type="radio"  value="No" name="hod_or_rep">Representative</label>
                     @if ($errors->has('hod_or_rep'))
                     <span class="invalid-feedback">
                       <strong>{{ $errors->first('hod_or_rep') }}</strong>

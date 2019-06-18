@@ -9,7 +9,7 @@
 @if(session()->has('message'))
 		<script>
 		$(function() {
-			swal('Yay!', '{{ session('message') }}', 'success')
+			swal('Done!', '{{ session('message') }}', 'success')
 		});
 	</script>
 
