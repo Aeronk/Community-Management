@@ -37,11 +37,13 @@ class ZoneController extends Controller
     public function store(Request $request)
     {
         Validator::make($request->all(),[
-            'zone' => 'required'
+            'zone' => 'required',
+            'province_id' => 'required'
         ])->validate();
 
         Zone::create([
-           'name' => $request->input('zone')
+           'name' => $request->input('zone'),
+            'province_id' => $request->input('province_id')
         ]);
 
         return redirect()->back()->with('message', 'Zone Added successfully');
@@ -79,13 +81,15 @@ class ZoneController extends Controller
     {
         Validator::make($request->all(),[
             'id' => 'required',
-            'zone' => 'required'
+            'zone' => 'required',
+            'province_id' => 'required'
         ])->validate();
 
         $zone = Zone::findOrFail($request->input('id'));
 
         $update = $zone->update([
-            'name' => $request->input('zone')
+            'name' => $request->input('zone'),
+            'province_id' => $request->input('province_id')
         ]);
 
         if ($update){

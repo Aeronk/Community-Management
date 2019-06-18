@@ -284,6 +284,7 @@
                                             <thead>
                                             <tr>
                                                 <th>Name</th>
+                                                <th>Province</th>
                                                 <th>Operations</th>
                                             </tr>
                                             </thead>
@@ -291,6 +292,7 @@
                                             @foreach($zones as $zone)
                                                 <tr>
                                                     <td>{{$zone->name}}</td>
+                                                    <td>{{$zone->province->name}}</td>
                                                     <td>
 
                                                         <button class="btn btn-warning btn-xs open_edit_zone_modal"
@@ -330,6 +332,15 @@
                                                                 <input type="text" class="form-control"
                                                                        placeholder="Zone Name"
                                                                        name="zone">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Select Province</label>
+                                                                <select class="form-control select_item" name="province_id"
+                                                                        required>
+                                                                    @foreach($provinces as $pro)
+                                                                        <option value="{{$pro->id}}">{{$pro->name}}</option>
+                                                                    @endforeach
+                                                                </select>
                                                             </div>
                                                             <div class="form-group">
                                                                 <input type="submit" class="btn btn-info btn-block"
@@ -373,6 +384,15 @@
                                                                 <input id="edit-zone" type="text"
                                                                        class="form-control"
                                                                        name="zone" value="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Select Province</label>
+                                                                <select class="form-control select_item" name="province_id"
+                                                                        required>
+                                                                    @foreach($provinces as $pro)
+                                                                        <option value="{{$pro->id}}">{{$pro->name}}</option>
+                                                                    @endforeach
+                                                                </select>
                                                             </div>
                                                             <div class="form-group">
                                                                 <input type="submit" class="btn btn-info btn-block"
