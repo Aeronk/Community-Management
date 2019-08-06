@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use DB;
 use App\Hod;
 use App\Contact;
@@ -25,33 +26,33 @@ class DenominationController extends Controller
     public function index()
     {
         // $this->dispatch(new SendMessageJob("This is a test", "263775391733", "EFZ"));
-        
+
         // $categories= DB::table('categories')->get();
 
-        $denominations=Denomination::with('hod','contact','commission','programs','category')->get();
+        $denominations = Denomination::with('hod', 'contact', 'commission', 'programs', 'category')->get();
 
 
         return view('denominations.denominations-view')->with('denominations', $denominations);
 
     }
 
-    protected  function sendMail($message,$sendTo,$Receiver)
+    protected function sendMail($message, $sendTo, $Receiver)
     {
-        
-        $mail= new PHPMailer(true); // create a n
-        $mail->SMTPDebug  = 0; // debugging: 1 = errors and messages, 2 = messages only
-        $mail->SMTPAuth   = true; // authentication enabled
+
+        $mail = new PHPMailer(true); // create a n
+        $mail->SMTPDebug = 0; // debugging: 1 = errors and messages, 2 = messages only
+        $mail->SMTPAuth = true; // authentication enabled
         $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
-        $mail->isSMTP(); 
+        $mail->isSMTP();
         $mail->Host = "mail.churchsoftware.co.za";
-        $mail->Port       = 25; // or 587
+        $mail->Port = 25; // or 587
         $mail->IsHTML(true);
-        $mail->Username = "info@churchsoftware.co.za";                 
+        $mail->Username = "info@churchsoftware.co.za";
         $mail->Password = "3sixty1@123";
         $mail->SetFrom("efz@gmail.com", 'EFZ');
         $mail->Subject = "Denomination Registration";
-        $mail->Body    = $message;
-        $mail->AddAddress($sendTo,$Receiver);
+        $mail->Body = $message;
+        $mail->AddAddress($sendTo, $Receiver);
         if ($mail->send()) {
             return 'Email Sended Successfully';
         } else {
@@ -67,17 +68,17 @@ class DenominationController extends Controller
     public function create()
     {
 
-        $programs=DB::table('programslist')->get();
-        $categories=DB::table('categories')->get();
-        $countries=DB::table('countries')->get();
-        return view('denominations.denominations-add')->with('programs',$programs)
-                                        ->with('categories',$categories)->with('countries',$countries);
+        $programs = DB::table('programslist')->get();
+        $categories = DB::table('categories')->get();
+        $countries = DB::table('countries')->get();
+        return view('denominations.denominations-add')->with('programs', $programs)
+            ->with('categories', $categories)->with('countries', $countries);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -89,7 +90,7 @@ class DenominationController extends Controller
             // 'email' => 'required|string|email|max:255|unique:users'
             // 'year' => 'required',
             'number_of_branches' => 'numeric',
-            'number_of_members' => 'numeric', 
+            'number_of_members' => 'numeric',
             'sub_balance' => 'numeric',
             // 'countries_spread' => 'required',
             // 'hq_address' => 'required',
@@ -110,39 +111,36 @@ class DenominationController extends Controller
             // 'yfullname' => 'required',
             // 'ycontact_number' => 'required',
             // 'yemail' => 'required'
-            
+
         ]);
 
-         /*saving in the database*/
+        /*saving in the database*/
 
         $denomination = $this->createDenomination($request->all());
 
         /*Updating status in the database*/
         $page = Denomination::find($denomination->id);
 
-         $dens=DB::table('categories')->where("name",$denomination->category)->get();
-         foreach ($dens as $den) {
-          
-             $totalperyear= 4*$den->subscription;
-             if ($denomination->sub_balance > $totalperyear) {
+        $dens = DB::table('categories')->where("name", $denomination->category)->get();
+        foreach ($dens as $den) {
 
-               Denomination::find($denomination->id)
-                  
+            $totalperyear = 4 * $den->subscription;
+            if ($denomination->sub_balance > $totalperyear) {
+
+                Denomination::find($denomination->id)
                     ->update([
                         "status" => "bad",
                     ]);
-                             
-             }else{
-                 
+
+            } else {
+
                 Denomination::find($denomination->id)
                     // ->where('id',$denomination->id)
                     ->update([
                         "status" => "good",
                     ]);
-             }
-         }
-        
-        
+            }
+        }
 
 
         Hod::create([
@@ -155,7 +153,7 @@ class DenominationController extends Controller
             'marital_status' => $request->input('marital_status'),
             'gender' => $request->input('gender'),
             'hod_or_rep' => $request->input('hod_or_rep'),
-        ]);  
+        ]);
 
 
         Contact::create([
@@ -169,93 +167,89 @@ class DenominationController extends Controller
             'yfullname' => $request->input('yfullname'),
             'ycontact_number' => $request->input('ycontact_number'),
             'yemail' => $request->input('yemail'),
-        ]); 
+        ]);
 
 
+        $string1 = '';
+        if (is_array($request->input('research_and_dev')) || is_object($request->input('research_and_dev'))) {
+            foreach ($request->input('research_and_dev') as $research_and_dev) {
+                $string1 .= $research_and_dev . ',';
+            }
 
+        }
 
-             $string1='';
-            if (is_array($request->input('research_and_dev')) || is_object($request->input('research_and_dev')))
-                {
-                 foreach ($request->input('research_and_dev') as $research_and_dev){
-                    $string1 .=  $research_and_dev.',';
-                 }
+        $string2 = '';
+        if (is_array($request->input('gender_dev')) || is_object($request->input('gender_dev'))) {
+            foreach ($request->input('gender_dev') as $gender_dev) {
+                $string2 .= $gender_dev . ',';
+            }
+        }
+        $string3 = '';
+        if (is_array($request->input('humanitarian')) || is_object($request->input('humanitarian'))) {
+            foreach ($request->input('humanitarian') as $humanitarian) {
+                $string3 .= $humanitarian . ',';
+            }
+        }
 
-             }
+        $string4 = '';
 
-            $string2='';
-          if (is_array($request->input('gender_dev')) || is_object($request->input('gender_dev')))
-                {
-             foreach ($request->input('gender_dev') as $gender_dev){
-                $string2 .=  $gender_dev.',';
-             }
-         }
-              $string3='';
-             if (is_array($request->input('humanitarian')) || is_object($request->input('humanitarian')))
-                {
-             foreach ($request->input('humanitarian') as $humanitarian){
-                $string3 .=  $humanitarian.',';
-             }
-                    }
+        if (is_array($request->input('peace_justice')) || is_object($request->input('peace_justice'))) {
+            foreach ($request->input('peace_justice') as $peace_justice) {
+                $string4 .= $peace_justice . ',';
+            }
+        }
+        $string5 = '';
 
-              $string4='';
-
-             if (is_array($request->input('peace_justice')) || is_object($request->input('peace_justice')))
-                {
-             foreach ($request->input('peace_justice') as $peace_justice){
-                $string4 .=  $peace_justice.',';
-                 }
-                }
-            $string5='';
-
-             if (is_array($request->input('comm_for_min')) || is_object($request->input('comm_for_min')))
-                {
-             foreach ($request->input('comm_for_min') as $comm_for_min){
-                $string5 .=  $comm_for_min.',';
-                   }
-                 }
+        if (is_array($request->input('comm_for_min')) || is_object($request->input('comm_for_min'))) {
+            foreach ($request->input('comm_for_min') as $comm_for_min) {
+                $string5 .= $comm_for_min . ',';
+            }
+        }
 
         $commission = $denomination->commission()->create([
 
             'denomination_id' => $denomination->id,
             'research_and_dev' => $string1,
             'gender_dev' => $string2,
-            'humanitarian' =>$string3,
-            'peace_justice' =>$string4,
-            'comm_for_min' =>$string5,
+            'humanitarian' => $string3,
+            'peace_justice' => $string4,
+            'comm_for_min' => $string5,
 
         ]);
-       
+
 
         $denomination = Denomination::find($denomination->id);
-         $string='';
-         
-             foreach ($request->input('programs') as $value)
-             {
-                  $program = $denomination->programs()->create([
-            // 'denomination_id' => $denomination->id,
-                'programs' => $value,
-                  ]);
-             }
 
-        
-      DB::commit();
-      // $this->sendEmail($request->input('fafullname'),$$request->input('fafullemail'));
+        if ($request->has('programs')) {
+            $string = '';
+
+            foreach ($request->input('programs') as $value) {
+                $program = $denomination->programs()->create([
+                    // 'denomination_id' => $denomination->id,
+                    'programs' => $value,
+                ]);
+            }
+        }
+
+
+        DB::commit();
+        // $this->sendEmail($request->input('fafullname'),$$request->input('fafullemail'));
         // return redirect()->back()->with('message', 'Denomination Added successfully');
-      return redirect()->route('denomination.show', [$denomination->id])->with('message', 'Denomination Added successfully');
-         
-
-    } 
+        return redirect()->route('denomination.show', [$denomination->id])->with('message', 'Denomination Added successfully');
 
 
+    }
 
-    protected function createDenomination($request) {
+
+    protected
+    function createDenomination($request)
+    {
         $data = [
             'name' => $request['name'],
             'year_found' => $request['year'],
             'number_of_branches' => $request['number_of_branches'],
             'number_of_members' => $request['number_of_members'],
-            'countries_spread' =>implode("," , $request['countries_spread']),
+            'countries_spread' => implode(",", $request['countries_spread']),
             'category' => $request['category'],
             'sub_balance' => $request['sub_balance'],
             'hq_address' => $request['hq_address']
@@ -266,61 +260,61 @@ class DenominationController extends Controller
     }
 
 
+//  public function sendEmail($receiver,$username,$password,$dname)
+//     {
+//     $from = "info@efz.co.zw";    //senders email address
+//     $subject = 'Denomination Registration';  //email subject
 
-    //  public function sendEmail($receiver,$username,$password,$dname)
-    //     {
-    //     $from = "info@efz.co.zw";    //senders email address
-    //     $subject = 'Denomination Registration';  //email subject
-        
-    //     //sending confirmEmail($receiver) function calling link to the user, inside message body
-    //    $message ="<p>Thank you for registering on your Denomination on EFZ database, the following information has been captured for use by EFZ, please kindly check if all the information is correct. Get in touch with the Church Administrator for any amendments. </p>";
-        
-        
-    //    $mail = $this->phpmailerlib->load();
-    // try {
-    //         //Server settings
-    //         $mail->SMTPDebug = 3;                                 // Enable verbose debug output
-    //         $mail->isMail();                                      // Set mailer to use SMTP
-    //         $mail->Host = 'mail.churchsoftware.co.za';  // Specify main and backup SMTP servers
-    //         $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    //         $mail->Username = 'info@churchsoftware.co.za';                 // SMTP username
-    //         $mail->Password = '3sixty1@123';                           // SMTP password
-    //         $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-    //         $mail->Port = 25;                                    // TCP port to connect to
-    //         //Recipients
-    //         $mail->setFrom('info@churchsoftware.co.za', 'Edge Online');
-    //         $mail->addAddress($receiver, $name);     // Add a recipient
-    //         // $mail->addAddress('Aaron');               // Name is optional
-    //         $mail->addReplyTo('info@churchsoftware.co.za', 'Edge');
-    //         //$mail->addCC('cc@example.com');
-    //         //$mail->addBCC('bcc@example.com');
+//     //sending confirmEmail($receiver) function calling link to the user, inside message body
+//    $message ="<p>Thank you for registering on your Denomination on EFZ database, the following information has been captured for use by EFZ, please kindly check if all the information is correct. Get in touch with the Church Administrator for any amendments. </p>";
 
-    //         //Attachments
-    //         //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-    //         //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
-    //         //Content
-    //         $mail->isHTML(true);                                  // Set email format to HTML
-    //         $mail->Subject = $subject;
-    //         $mail->Body    = $message;
-    //         // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+//    $mail = $this->phpmailerlib->load();
+// try {
+//         //Server settings
+//         $mail->SMTPDebug = 3;                                 // Enable verbose debug output
+//         $mail->isMail();                                      // Set mailer to use SMTP
+//         $mail->Host = 'mail.churchsoftware.co.za';  // Specify main and backup SMTP servers
+//         $mail->SMTPAuth = true;                               // Enable SMTP authentication
+//         $mail->Username = 'info@churchsoftware.co.za';                 // SMTP username
+//         $mail->Password = '3sixty1@123';                           // SMTP password
+//         $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+//         $mail->Port = 25;                                    // TCP port to connect to
+//         //Recipients
+//         $mail->setFrom('info@churchsoftware.co.za', 'Edge Online');
+//         $mail->addAddress($receiver, $name);     // Add a recipient
+//         // $mail->addAddress('Aaron');               // Name is optional
+//         $mail->addReplyTo('info@churchsoftware.co.za', 'Edge');
+//         //$mail->addCC('cc@example.com');
+//         //$mail->addBCC('bcc@example.com');
 
-    //         $mail->send();
-    //         DB::table('emails')->where(array('status'=>1,'type'=>'company'))->update(array('status'=>2));
-    //     } catch (Exception $e) {
-    //         // echo 'Message could not be sent.';
-    //         // echo 'Mailer Error: ' . $mail->ErrorInfo;
-    //     }
-       
-    // }
+//         //Attachments
+//         //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+//         //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+//         //Content
+//         $mail->isHTML(true);                                  // Set email format to HTML
+//         $mail->Subject = $subject;
+//         $mail->Body    = $message;
+//         // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+//         $mail->send();
+//         DB::table('emails')->where(array('status'=>1,'type'=>'company'))->update(array('status'=>2));
+//     } catch (Exception $e) {
+//         // echo 'Message could not be sent.';
+//         // echo 'Mailer Error: ' . $mail->ErrorInfo;
+//     }
+
+// }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Denomination  $denomination
+     * @param \App\Denomination $denomination
      * @return \Illuminate\Http\Response
      */
-    public function show(Denomination $denomination)
+    public
+    function show(Denomination $denomination)
     {
         return view('denominations.denominations-single')->with('denomination', $denomination);
     }
@@ -328,77 +322,74 @@ class DenominationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Denomination  $denomination
+     * @param \App\Denomination $denomination
      * @return \Illuminate\Http\Response
      */
-    public function edit(Denomination $denomination)
+    public
+    function edit(Denomination $denomination)
     {
 
-      
-        $programs=DB::table('programslist')->get();
-        $myprograms=Program::where('denomination_id',$denomination->id)->get();
-        $commissions=Commission::where('denomination_id',$denomination->id)->first();
-        
-     
-        $mp=collect([]);
+
+        $programs = DB::table('programslist')->get();
+        $myprograms = Program::where('denomination_id', $denomination->id)->get();
+        $commissions = Commission::where('denomination_id', $denomination->id)->first();
+
+
+        $mp = collect([]);
         foreach ($myprograms as $program) {
-            
+
             $mp->push($program->programs);
         }
 
-        $mprograms=$mp->toArray();
+        $mprograms = $mp->toArray();
 
         // return $mprograms;
 
 
-     $gd= explode(',', $commissions->gender_dev);
-     $rd= explode(',', $commissions->research_and_dev);
-     $hu= explode(',', $commissions->humanitarian);
-     $pj= explode(',', $commissions->peace_justice);
-     $cm= explode(',', $commissions->comm_for_min);
-
+        $gd = explode(',', $commissions->gender_dev);
+        $rd = explode(',', $commissions->research_and_dev);
+        $hu = explode(',', $commissions->humanitarian);
+        $pj = explode(',', $commissions->peace_justice);
+        $cm = explode(',', $commissions->comm_for_min);
 
 
         $data = array(
             'gender_dev' => $gd,
-            'research_and_dev'=>$rd,
-            'humanitarian'=>$hu
+            'research_and_dev' => $rd,
+            'humanitarian' => $hu
         );
 
 
-
-
-       
-
-        $categories=DB::table('categories')->get();
-        $countries=DB::table('countries')->get();
+        $categories = DB::table('categories')->get();
+        $countries = DB::table('countries')->get();
 
         return view('denominations.denominations-edit')->with('denomination', $denomination)
-                                        ->with('programs',$programs)
-                                        ->with('countries',$countries)
-                                        ->with('mprograms',$mprograms)
-                                        ->with('data',$data)
-                                        ->with('gd',$gd)
-                                        ->with('rd',$rd)
-                                        ->with('hu',$hu)
-                                        ->with('pj',$pj)
-                                        ->with('cm',$cm)
-                                        ->with('categories',$categories);
+            ->with('programs', $programs)
+            ->with('countries', $countries)
+            ->with('mprograms', $mprograms)
+            ->with('data', $data)
+            ->with('gd', $gd)
+            ->with('rd', $rd)
+            ->with('hu', $hu)
+            ->with('pj', $pj)
+            ->with('cm', $cm)
+            ->with('categories', $categories);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Denomination  $denomination
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Denomination $denomination
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Denomination $denomination)
+    public
+    function update(Request $request, Denomination $denomination)
     {
 
         DB::beginTransaction();
         Denomination::unguard();
-           $data = [
+        $data = [
             'name' => $request['name'],
             'year_found' => $request['year'],
             'number_of_branches' => $request['number_of_branches'],
@@ -411,8 +402,7 @@ class DenominationController extends Controller
         $denomination->update($data);
 
 
-
-        $hod=Hod::where('denomination_id',$denomination->id)->first();
+        $hod = Hod::where('denomination_id', $denomination->id)->first();
 
         $hod->update([
             'denomination_id' => $denomination->id,
@@ -424,9 +414,9 @@ class DenominationController extends Controller
             'marital_status' => $request->input('marital_status'),
             'gender' => $request->input('gender'),
             'hod_or_rep' => $request->input('hod_or_rep'),
-        ]);  
+        ]);
 
-        $contact=Contact::whereDenominationId($denomination->id)->first();
+        $contact = Contact::whereDenominationId($denomination->id)->first();
 
 
         $contact->update([
@@ -440,89 +430,82 @@ class DenominationController extends Controller
             'yfullname' => $request->input('yfullname'),
             'ycontact_number' => $request->input('ycontact_number'),
             'yemail' => $request->input('yemail'),
-        ]); 
+        ]);
 
 
+        $string1 = '';
+        if (is_array($request->input('research_and_dev')) || is_object($request->input('research_and_dev'))) {
+            foreach ($request->input('research_and_dev') as $research_and_dev) {
+                $string1 .= $research_and_dev . ',';
+            }
 
+        }
 
-             $string1='';
-            if (is_array($request->input('research_and_dev')) || is_object($request->input('research_and_dev')))
-                {
-                 foreach ($request->input('research_and_dev') as $research_and_dev){
-                    $string1 .=  $research_and_dev.',';
-                 }
+        $string2 = '';
+        if (is_array($request->input('gender_dev')) || is_object($request->input('gender_dev'))) {
+            foreach ($request->input('gender_dev') as $gender_dev) {
+                $string2 .= $research_and_dev . ',';
+            }
+        }
+        $string3 = '';
+        if (is_array($request->input('humanitarian')) || is_object($request->input('humanitarian'))) {
+            foreach ($request->input('humanitarian') as $humanitarian) {
+                $string3 .= $humanitarian . ',';
+            }
+        }
 
-             }
+        $string4 = '';
 
-            $string2='';
-          if (is_array($request->input('gender_dev')) || is_object($request->input('gender_dev')))
-                {
-             foreach ($request->input('gender_dev') as $gender_dev){
-                $string2 .=  $research_and_dev.',';
-             }
-         }
-              $string3='';
-             if (is_array($request->input('humanitarian')) || is_object($request->input('humanitarian')))
-                {
-             foreach ($request->input('humanitarian') as $humanitarian){
-                $string3 .=  $humanitarian.',';
-             }
-                    }
+        if (is_array($request->input('peace_justice')) || is_object($request->input('peace_justice'))) {
+            foreach ($request->input('peace_justice') as $peace_justice) {
+                $string4 .= $peace_justice . ',';
+            }
+        }
+        $string5 = '';
 
-              $string4='';
-
-             if (is_array($request->input('peace_justice')) || is_object($request->input('peace_justice')))
-                {
-             foreach ($request->input('peace_justice') as $peace_justice){
-                $string4 .=  $peace_justice.',';
-                 }
-                }
-            $string5='';
-
-             if (is_array($request->input('comm_for_min')) || is_object($request->input('comm_for_min')))
-                {
-             foreach ($request->input('comm_for_min') as $comm_for_min){
-                $string5 .=  $comm_for_min.',';
-                   }
-                 }
+        if (is_array($request->input('comm_for_min')) || is_object($request->input('comm_for_min'))) {
+            foreach ($request->input('comm_for_min') as $comm_for_min) {
+                $string5 .= $comm_for_min . ',';
+            }
+        }
 
         $commission = $denomination->commission()->update([
 
             'denomination_id' => $denomination->id,
             'research_and_dev' => $string1,
             'gender_dev' => $string2,
-            'humanitarian' =>$string3,
-            'peace_justice' =>$string4,
-            'comm_for_min' =>$string5,
+            'humanitarian' => $string3,
+            'peace_justice' => $string4,
+            'comm_for_min' => $string5,
 
         ]);
-       
+
 
         $denomination = Denomination::find($denomination->id);
-         $string='';
-         
-             foreach ($request->input('programs') as $value)
-             {
-                  $program = $denomination->programs()->update([
-            // 'denomination_id' => $denomination->id,
-                'programs' => $value,
-                  ]);
-             }
-      DB::commit();
-             return redirect()->back()->with('message', 'Denomination Edited successfully');
+        $string = '';
 
-        
+        foreach ($request->input('programs') as $value) {
+            $program = $denomination->programs()->update([
+                // 'denomination_id' => $denomination->id,
+                'programs' => $value,
+            ]);
+        }
+        DB::commit();
+        return redirect()->back()->with('message', 'Denomination Edited successfully');
+
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Denomination  $denomination
+     * @param \App\Denomination $denomination
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Denomination $denomination)
+    public
+    function destroy(Denomination $denomination)
     {
-        if($denomination->delete()) {
+        if ($denomination->delete()) {
             return redirect()->back()->with('message', "Record deleted successfully");
         }
 
