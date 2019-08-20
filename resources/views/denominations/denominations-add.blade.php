@@ -20,7 +20,6 @@
             {!! csrf_field() !!}
 
             @include('partials.validation')
-            
 
             <div class="panel panel-danger">
               <div class="panel-heading" style= 'padding:10px'>
@@ -364,8 +363,6 @@ de
                 </div>
                 
                 <h3 style="text-align:left">Youth Contact Information</h3>
-
-
 
                 <div class="form-group">
                   <label for="yfullname" class="col-sm-2 control-label" style="text-align:left"><strong>Full Name</strong><i style="color:red" class="iglyphicon glyphicon-asterisk"></i></label>

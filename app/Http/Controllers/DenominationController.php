@@ -83,7 +83,7 @@ class DenominationController extends Controller
      */
     public function store(Request $request)
     {
-
+//        return $request->all();
         DB::beginTransaction();
         $this->validate($request, [
             'name' => 'required|unique:denominations',
@@ -92,7 +92,7 @@ class DenominationController extends Controller
             'number_of_branches' => 'numeric',
             'number_of_members' => 'numeric',
             'sub_balance' => 'numeric',
-            // 'countries_spread' => 'required',
+//            'countries_spread' => 'required',
             // 'hq_address' => 'required',
             // 'title' => 'required',
             'first_name' => 'required',
@@ -241,8 +241,7 @@ class DenominationController extends Controller
     }
 
 
-    protected
-    function createDenomination($request)
+    protected function createDenomination($request)
     {
         $data = [
             'name' => $request['name'],

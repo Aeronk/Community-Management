@@ -19,7 +19,6 @@ Route::get('/test', function () {
 
 Route::group(['middleware' => ['web', 'auth']], function () {
 
-
     Route::get('/', 'DashboardController@index');
 
     Route::get('/category', array('as' => 'category',
